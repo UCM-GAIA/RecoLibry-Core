@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.log4j.LogManager;
 
+import com.google.inject.Inject;
+
 import es.ucm.fdi.gaia.jcolibri.casebase.LinealCaseBase;
 import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
@@ -35,10 +37,16 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 	
 	private CBRCaseBase casebase;
 	private Connector connector;
-	private int kNeighbourhood = 5; // TODO - Esto se injecta también.
+	private int kNeighbourhood;
 	
 	private List<RecommenderResult> recommenderResults;
 
+	@Inject
+	public RecommenderJColibri(Connector connector, int kNeighbourhood) {
+		this.connector = connector;
+		this.kNeighbourhood = kNeighbourhood;
+	}
+	
 	public boolean init() {
 		try {
 			configure();
@@ -75,7 +83,7 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 	
 	public void configure() throws ExecutionException {
 		//TODO - Esto tiene que ser inyectado. El connector es una fuente de conocimiento.
-		connector = new CSVConnector("src/main/resources/movies.csv", true);
+		// connector = new CSVConnector("src/main/resources/movies.csv", true);
 		casebase = new LinealCaseBase();
 	}
 

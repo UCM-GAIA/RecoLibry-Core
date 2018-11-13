@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import com.opencsv.CSVReader;
 
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
@@ -34,7 +36,8 @@ public class CSVConnector implements Connector {
 	
 	private List<CBRCase> cases;
 	
-	public CSVConnector(String fileName, boolean existTitleRow) {
+	@Inject
+	public CSVConnector(@Named("fileName") String fileName, @Named("existTitleRow") boolean existTitleRow) {
 		super();
 		this.fileName = fileName;
 		this.existTitleRow = existTitleRow;
