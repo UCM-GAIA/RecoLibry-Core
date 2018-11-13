@@ -30,7 +30,6 @@ import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
  */
 public class CSVConnector implements Connector {
 	
-	//TODO - Variables que hay que inyectar
 	private String fileName;
 	private boolean existTitleRow;
 	
@@ -45,9 +44,7 @@ public class CSVConnector implements Connector {
 	}
 
 	private void init() {
-		
 		try {
-			
 			// Open CSV file
 			FileInputStream fis = new FileInputStream(fileName);
 			InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
