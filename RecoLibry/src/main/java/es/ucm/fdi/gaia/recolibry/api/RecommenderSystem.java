@@ -1,5 +1,7 @@
 package es.ucm.fdi.gaia.recolibry.api;
 
+import java.util.List;
+
 import com.google.inject.Inject;
 
 /**
@@ -26,6 +28,10 @@ public class RecommenderSystem {
 
 	public Query getQuery() {
 		return query;
+	}
+	
+	public List<RecommenderResult> recommend(Query query) {
+		return algorithm.recommend(query);
 	}
 	
 }

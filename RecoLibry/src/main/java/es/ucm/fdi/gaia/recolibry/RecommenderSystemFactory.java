@@ -9,13 +9,15 @@ public class RecommenderSystemFactory {
 	
 	private RecommenderSystem recommender;
 	
-	public RecommenderSystemFactory() {
-		
-	}
+	public RecommenderSystemFactory() {}
 	
 	public void makeRecommender() {
 		Injector injector = Guice.createInjector(new RecommenderSystemConfiguration());
 		recommender = injector.getInstance(RecommenderSystem.class);
+	}
+	
+	public void makeRecommenderByJson(String file) {
+		
 	}
 	
 	public RecommenderSystem getRecommender() {

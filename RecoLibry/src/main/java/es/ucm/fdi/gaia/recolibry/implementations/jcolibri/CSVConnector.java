@@ -26,7 +26,7 @@ import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
  * 
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
- * TODO - Hay que generalizarlo. Ahora mismo es sólo un ejemplo.
+ * TODO - Tareas que faltan: generalizarlo para leer cualquier ojeto POJO, permitir añadir elementos, permitir eliminar elementos.
  */
 public class CSVConnector implements Connector {
 	
@@ -61,6 +61,7 @@ public class CSVConnector implements Connector {
 				reader.readNext();
 			
 			while ((nextLine = reader.readNext()) != null) {
+				//TODO - Estoy hay que darle una pensada de como puede hacerse para clases genéricas
 				MovieCase movie = new MovieCase(Integer.valueOf(nextLine[0]), nextLine[1], nextLine[2].split("\\|"));
 				CBRCase c = new CBRCase();
 				c.setDescription(movie);
