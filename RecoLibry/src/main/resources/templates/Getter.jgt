@@ -1,0 +1,9 @@
+/**
+ * Returns the value of type <<DataType>> for attribute <<AttributeName>>.
+ * @return value of <<AttributeName>>
+ */
+public <<DataType>> get<<+AttributeName>>()   
+{
+    return this.<<AttributeName>>;
+}
+

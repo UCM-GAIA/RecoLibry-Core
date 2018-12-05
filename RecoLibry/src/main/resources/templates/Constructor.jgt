@@ -1,0 +1,7 @@
+/**
+ * Constructor with all attributes.
+ */
+public <<ClassName>>(<<foreachAttribute --> Argument.jgt /,>>)  //#  operator  /, deletes the last trailing comma from the list of arguments
+{
+    << foreachAttribute --> AttributeInit.jgt />>
+}

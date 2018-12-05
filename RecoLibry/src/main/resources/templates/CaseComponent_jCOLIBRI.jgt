@@ -1,0 +1,24 @@
+package <<PackageName>>;
+
+import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
+
+public class <<ClassName>> implements CaseComponent {
+
+	<< foreachAttribute --> Attribute.jgt />> 
+	
+	<< Include <-- Constructor.jgt />>
+	
+	public Attribute getIdAttribute() {
+		return new Attribute("id", <<ClassName>>.class);
+	}
+
+    << foreachAttribute --> Getter.jgt />>
+    
+    // {{ProtectedRegionStart::ManuallyWrittenCode}}    
+        // ...
+        // insert your customized code here!        
+        // ... 
+    // {{ProtectedRegionEnd}}
+	
+}

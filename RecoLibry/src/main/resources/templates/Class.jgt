@@ -1,0 +1,16 @@
+package <<PackageName>>;    
+  
+public class <<ClassName>> implements <<InterfaceName>>
+{ 
+    << foreachAttribute --> Attribute.jgt />> 
+    
+    << Include <-- Constructor.jgt />>
+    
+    << foreachAttribute --> Getter.jgt />> 
+    
+    // {{ProtectedRegionStart::ManuallyWrittenCode}}    
+        // ...
+        // insert your customized code here!        
+        // ... 
+    // {{ProtectedRegionEnd}}
+}

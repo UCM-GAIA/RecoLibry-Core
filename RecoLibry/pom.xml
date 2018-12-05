@@ -1,48 +1,272 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>es.ucm.fdi.gaia</groupId>
-  <artifactId>RecoLibry</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>com</groupId>
+    <artifactId>RecoLibry</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>RecoLibry</name>
-  <url>http://maven.apache.org</url>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <!-- ===================================================================== -->
+    <!-- ATTENTION:                                                            -->
+    <!-- Due to problems with the Maven4Eclipse plug-in we needed to add some  -->
+    <!-- configs especially for eclipse to make it work everywhere             -->
+    <!-- ===================================================================== -->
 
-  <dependencies>
-  
-  	<!-- Open CSV -->
-  	<dependency>
-		<groupId>com.opencsv</groupId>
-		<artifactId>opencsv</artifactId>
-		<version>4.3</version>
-  	</dependency>
-  
-  	<!-- Google Guice -->
-  	<dependency>
-	    <groupId>com.google.inject</groupId>
-	    <artifactId>guice</artifactId>
-	    <version>4.0</version>
-	</dependency>
-	
-	<!-- Recommender Frameworks -->
-	<dependency>
-	    <groupId>es.ucm.fdi.gaia</groupId>
-	    <artifactId>jCOLIBRI</artifactId>
-	    <version>3.2</version>
-	</dependency>
-		
-	<!-- Test Dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <build>
+
+        <!-- ======================================= -->
+        <!-- Plugin Management for Eclipse Lifecycle -->
+        <!-- ======================================= -->
+
+        <pluginManagement>
+
+            <plugins>
+
+                <!-- The following plugin configuration is needed to store -->
+                <!-- Eclipse Maven4Eclipse settings only.                  -->
+                <!-- It has no influence on the Maven build itself.        -->
+
+                <plugin>
+
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+
+                                <!-- Needed for lifecycle mapping: java goal (calling a java main class) -->
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>exec-maven-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>exec</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute>
+                                            <runOnIncremental>true</runOnIncremental>
+                                        </execute>
+                                    </action>
+                                </pluginExecution>
+
+                                <!-- Needed for lifecycle mapping: add-source goal (adding source trees to build class path) -->
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>build-helper-maven-plugin</artifactId>
+                                        <versionRange>[1.0,)</versionRange>
+                                        <goals>
+                                            <goal>add-source</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute>
+                                            <runOnIncremental>true</runOnIncremental>
+                                        </execute>
+                                    </action>
+                                </pluginExecution>
+
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+
+        <!-- ============= -->
+        <!--    Plugins    -->
+        <!-- ============= -->
+
+        <plugins>
+
+            <!-- Add source directories: -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                    <execution>
+                        <id>add-source-directories</id>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <phase>process-sources</phase>
+                        <configuration>
+                            <sources>
+                                <source>src/gen-beans/java/</source>
+                                <source>src/gen/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Update beanbuild.cmd script and generate template beans: -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+
+                    <!-- Update beanbuild.cmd script if version for jiowa-codegen changes within pom.xml -->
+                    <execution>
+                        <id>update-beanbuild-cmd-script</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath>
+                                    <dependency>com.jiowa:jiowa-codegen</dependency>
+                                </classpath>
+                                <argument>com.jiowa.codegen.beangen.build.BeanbuildCmdScriptUpdater</argument>
+                                <argument>beanbuild.cmd</argument>               <!-- name of script to be updated -->
+                                <argument>codegen.properties</argument>    <!-- property file to be used in the script -->
+                                <argument>check-template-syntax-only</argument>	 <!-- check only for syntax errors and do not generate the beans. They are generated by the maven build -->
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                    <!-- Generate template beans: -->
+                    <execution>
+                        <id>generate-template-beans</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath>
+                                    <dependency>com.jiowa:jiowa-codegen</dependency>
+                                </classpath>
+                                <argument>com.jiowa.codegen.beangen.JiowaCodeGenTemplateBeanGenerator</argument>
+                                <argument>codegen.properties</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+
+            <!-- Compiler -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+    <!-- ================= -->
+    <!-- JIOWA repository: -->
+    <!-- ================= -->
+
+    <repositories>
+        <repository>
+            <id>jiowa-maven-repository</id>
+            <url>http://www.jiowa.de/maven/repository/</url>
+        </repository>
+    </repositories>
+
+    <!-- ============ -->
+    <!-- Dependencies -->
+    <!-- ============ -->
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.jiowa</groupId>
+            <artifactId>jiowa-codegen</artifactId>
+            <version>2.1.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.reflections/reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.googlecode.classgrep/classgrep -->
+        <dependency>
+            <groupId>com.googlecode.classgrep</groupId>
+            <artifactId>classgrep</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/cn.wensiqun/classgrep -->
+        <dependency>
+            <groupId>cn.wensiqun</groupId>
+            <artifactId>classgrep</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <!-- Open CSV -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>4.3</version>
+        </dependency>
+
+        <!-- Google Guice -->
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.0</version>
+        </dependency>
+
+        <!-- Recommender Frameworks -->
+        <dependency>
+            <groupId>es.ucm.fdi.gaia</groupId>
+            <artifactId>jCOLIBRI</artifactId>
+            <version>3.2</version>
+        </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
 </project>

@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -16,9 +17,11 @@ import com.opencsv.CSVReader;
 
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseBaseFilter;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
 import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
 import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
+import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 
 /**
  * Connector to read CSV file and use it in jCOLIBRI. It transforms the
@@ -26,24 +29,25 @@ import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
  * 
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
- * TODO - Tareas que faltan: generalizarlo para leer cualquier ojeto POJO, permitir añadir elementos, permitir eliminar elementos.
  */
 public class CSVConnector implements Connector {
 	
 	private String fileName;
 	private boolean existTitleRow;
+	private BeansFactory beansFactory;
 	
 	private List<CBRCase> cases;
 	
 	@Inject
-	public CSVConnector(@Named("fileName") String fileName, @Named("existTitleRow") boolean existTitleRow) {
+	public CSVConnector(@Named("beansFactory") BeansFactory beansFactory, @Named("fileName") String fileName, @Named("existTitleRow") boolean existTitleRow) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
 		super();
 		this.fileName = fileName;
 		this.existTitleRow = existTitleRow;
+		this.beansFactory = beansFactory;
 		init();
 	}
 
-	private void init() {
+	private void init() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 		try {
 			// Open CSV file
 			FileInputStream fis = new FileInputStream(fileName);
@@ -62,9 +66,14 @@ public class CSVConnector implements Connector {
 			
 			while ((nextLine = reader.readNext()) != null) {
 				//TODO - Estoy hay que darle una pensada de como puede hacerse para clases genéricas
-				MovieCase movie = new MovieCase(Integer.valueOf(nextLine[0]), nextLine[1], nextLine[2].split("\\|"));
+				//TODO - Hay que saber los tipos de datos para castearlos
+				List<Object> parameters = new ArrayList<>();
+				parameters.add(Integer.valueOf(nextLine[0]));
+				parameters.add(nextLine[1]);
+				parameters.add(nextLine[2].split("\\|"));
+
 				CBRCase c = new CBRCase();
-				c.setDescription(movie);
+				c.setDescription((CaseComponent) beansFactory.getBeanWithParameters(parameters));
 				
 				cases.add(c);
 			}

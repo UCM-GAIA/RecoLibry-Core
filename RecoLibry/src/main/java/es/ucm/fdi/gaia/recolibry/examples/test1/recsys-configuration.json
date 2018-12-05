@@ -1,5 +1,4 @@
 {
-
 	"algorithm": {
 		"class": "es.ucm.fdi.gaia.recolibry.implementations.jcolibri.RecommenderJColibri",
 	},
