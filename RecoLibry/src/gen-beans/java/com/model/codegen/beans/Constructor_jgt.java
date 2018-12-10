@@ -18,7 +18,7 @@ import java.util.*;
  * AUTOMATICALLY GENERATED <br>
  *  
  * Template Bean: Constructor_jgt <br>
- * Generation Timestamp: Mon Dec 10 11:57:56 CET 2018 <br>
+ * Generation Timestamp: Mon Dec 10 16:47:55 CET 2018 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -477,15 +477,15 @@ public class Constructor_jgt extends TemplateBean
         // subtemplates:
         subTemplateStructureIdentifiers.add("foreachAttribute");        
         // bean parts for toString() method:
-        partList.add(new TextPart("/**\n * Constructor with all attributes.\n */\npublic ",0));
+        partList.add(new TextPart("/**\r\n * Constructor with all attributes.\r\n */\r\npublic ",0));
         partList.add(new VariablePart("ClassName","<<ClassName>>",7));
         partList.add(new TextPart("(",24));
         partList.add(new SubTemplateStructurePart("foreachAttribute",25,"Argument."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(",")));
-        partList.add(new TextPart(")  \n{\n    ",140));
+        partList.add(new TextPart(")  \n{\r\n    ",140));
         partList.add(new SubTemplateStructurePart("foreachAttribute",4,"AttributeInit."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart("\n}\n",48));
+        partList.add(new TextPart("\r\n}\r\n",48));
     }
 }
 

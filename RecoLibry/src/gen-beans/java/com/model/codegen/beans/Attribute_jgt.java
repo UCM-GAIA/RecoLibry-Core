@@ -18,7 +18,7 @@ import java.util.*;
  * AUTOMATICALLY GENERATED <br>
  *  
  * Template Bean: Attribute_jgt <br>
- * Generation Timestamp: Mon Dec 10 11:57:56 CET 2018 <br>
+ * Generation Timestamp: Mon Dec 10 16:47:56 CET 2018 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -149,7 +149,7 @@ public class Attribute_jgt extends TemplateBean
         partList.add(new VariablePart("DataType","<<DataType>>",7));
         partList.add(new TextPart(" ",16));
         partList.add(new VariablePart("AttributeName","<<AttributeName>>",24));
-        partList.add(new TextPart(";\n",39));
+        partList.add(new TextPart(";\r\n",39));
     }
 }
 

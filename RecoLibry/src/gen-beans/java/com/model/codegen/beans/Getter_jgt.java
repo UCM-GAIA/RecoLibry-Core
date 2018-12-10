@@ -18,7 +18,7 @@ import java.util.*;
  * AUTOMATICALLY GENERATED <br>
  *  
  * Template Bean: Getter_jgt <br>
- * Generation Timestamp: Mon Dec 10 11:57:56 CET 2018 <br>
+ * Generation Timestamp: Mon Dec 10 16:47:56 CET 2018 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -144,19 +144,19 @@ public class Getter_jgt extends TemplateBean
         variables.add("AttributeName");        
         // subtemplates:        
         // bean parts for toString() method:
-        partList.add(new TextPart("/**\n * Returns the value of type ",0));
+        partList.add(new TextPart("/**\r\n * Returns the value of type ",0));
         partList.add(new VariablePart("DataType","<<DataType>>",29));
         partList.add(new TextPart(" for attribute ",45));
         partList.add(new VariablePart("AttributeName","<<AttributeName>>",60));
-        partList.add(new TextPart(".\n * @return value of ",81));
+        partList.add(new TextPart(".\r\n * @return value of ",81));
         partList.add(new VariablePart("AttributeName","<<AttributeName>>",20));
-        partList.add(new TextPart("\n */\npublic ",41));
+        partList.add(new TextPart("\r\n */\r\npublic ",41));
         partList.add(new VariablePart("DataType","<<DataType>>",7));
         partList.add(new TextPart(" get",23));
         partList.add(new VariablePart("AttributeName","<<+AttributeName>>",27,FirstToUpperCaseOperator.getInstance()));
-        partList.add(new TextPart("()   \n{\n    return this.",49));
+        partList.add(new TextPart("()   \r\n{\r\n    return this.",49));
         partList.add(new VariablePart("AttributeName","<<AttributeName>>",16));
-        partList.add(new TextPart(";\n}\n\n",37));
+        partList.add(new TextPart(";\r\n}\r\n\r\n",37));
     }
 }
 

@@ -18,7 +18,7 @@ import java.util.*;
  * AUTOMATICALLY GENERATED <br>
  *  
  * Template Bean: Class_jgt <br>
- * Generation Timestamp: Mon Dec 10 11:57:56 CET 2018 <br>
+ * Generation Timestamp: Mon Dec 10 16:47:56 CET 2018 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -747,28 +747,28 @@ public class Class_jgt extends TemplateBean
         // bean parts for toString() method:
         partList.add(new TextPart("package ",0));
         partList.add(new VariablePart("PackageName","<<PackageName>>",8));
-        partList.add(new TextPart(";    \n  \npublic class ",27));
+        partList.add(new TextPart(";    \r\n  \r\npublic class ",27));
         partList.add(new VariablePart("ClassName","<<ClassName>>",13));
         partList.add(new TextPart(" implements ",30));
         partList.add(new VariablePart("InterfaceName","<<InterfaceName>>",42));
-        partList.add(new TextPart("\n{ \n    ",63));
+        partList.add(new TextPart("\r\n{ \r\n    ",63));
         partList.add(new SubTemplateStructurePart("foreachAttribute",4,"Attribute."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart(" \n    \n    ",44));
-        partList.add(new TextPart("/**\n     * Constructor with all attributes.\n     */\n    public ",0));
+        partList.add(new TextPart(" \r\n    \r\n    ",44));
+        partList.add(new TextPart("/**\r\n     * Constructor with all attributes.\r\n     */\r\n    public ",0));
         partList.add(new VariablePart("ClassName","<<ClassName>>",11));
         partList.add(new TextPart("(",24));
         partList.add(new SubTemplateStructurePart("foreachAttribute",29,"Argument."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(",")));
-        partList.add(new TextPart(")  \n    {\n        ",140));
+        partList.add(new TextPart(")  \n    {\r\n        ",140));
         partList.add(new SubTemplateStructurePart("foreachAttribute",8,"AttributeInit."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart("\n    }\n    ",48));
+        partList.add(new TextPart("\r\n    }\r\n    ",48));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart("\n    \n    ",37));
+        partList.add(new TextPart("\r\n    \r\n    ",37));
         partList.add(new SubTemplateStructurePart("foreachAttribute",4,"Getter."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart(" \n    \n    // {{ProtectedRegionStart::ManuallyWrittenCode}}    \n        // ...\n        // insert your customized code here!        \n        // ... \n    // {{ProtectedRegionEnd}}\n}\n",41));
+        partList.add(new TextPart(" \r\n    \r\n    // {{ProtectedRegionStart::ManuallyWrittenCode}}    \r\n        // ...\r\n        // insert your customized code here!        \r\n        // ... \r\n    // {{ProtectedRegionEnd}}\r\n}\r\n",41));
     }
 }
 

@@ -18,12 +18,15 @@ import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.RecommenderJColibri;
 import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
+import javax.tools.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -35,7 +38,9 @@ import java.util.List;
  */
 public class RecommenderSystemConfiguration extends AbstractModule {
 
-    private String generateClass() {
+    private String file = "";
+
+    private void generateClass() {
         String packageName = "es.ucm.fdi.gaia.recolibry.examples.test1";
 
         String[] attr1 = new String[] {"id", "Integer"};
@@ -57,12 +62,24 @@ public class RecommenderSystemConfiguration extends AbstractModule {
         JiowaCodeGeneratorEngine engine = new JiowaCodeGeneratorEngine(classGenerator);
         engine.start();
 
-        return System.getProperty("user.dir") + "/src/main/java/" + packageName.replace(".", "/") + "/MovieCase2.java";
+        setFile(System.getProperty("user.dir") + "\\src\\main\\java\\" + packageName.replace(".", "\\") + "\\MovieCase2.java");
+
     }
 
-    private void compile(String... files) {
-        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-        compiler.run(null, null, null, files);
+    private void compile(){
+        try {
+            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+            StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
+            File output = new File("target/classes");
+            //output.mkdirs(); // Creo que no hace falta porque ya existe el target/classes :)
+            fileManager.setLocation(StandardLocation.CLASS_OUTPUT, Collections.singletonList(output));
+            List<File> classesToCompile = new ArrayList<>();
+            classesToCompile.add(new File(getFile()));
+            Iterable<? extends JavaFileObject> compilationUnits1 = fileManager.getJavaFileObjectsFromFiles(classesToCompile);
+            compiler.getTask(null, fileManager, null, null, null, compilationUnits1).call();
+        } catch (IOException e) {
+            System.out.println("----> Error compilando ficheros");
+        }
     }
 
 	@Override
@@ -73,23 +90,13 @@ public class RecommenderSystemConfiguration extends AbstractModule {
             bind(RecommenderAlgorithm.class).to(RecommenderJColibri.class);
             bind(Query.class).to(QueryJColibri.class);
 
-            //TODO - Generar dinamicamente MovieCase.java
-            String path = generateClass();
-            //TODO - Compilar dinamicamente MovieCase.java
-            compile(path);
-
-            String classPath = System.getProperty("user.dir") + "/src/main/java/" + "es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase2".replace(".", "/") + "/";
-            //Thread.sleep(5000);
-
-            // Configuración del CSV Connector
-            // Class clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase2");
-            URL[] urlClass = new URL[]{new URL("file://" + classPath)};
-            URLClassLoader classLoader = new URLClassLoader(urlClass);
-            Class clazz = classLoader.loadClass("es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase2");
+            generateClass();
+            compile();
+            Class clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase2");
             BeansFactory factory = new BeansFactory(clazz);
 
             bind(BeansFactory.class).annotatedWith(Names.named("beansFactory")).toInstance(factory);
-            bind(String.class).annotatedWith(Names.named("fileName")).toInstance("./movies.csv");
+            bind(String.class).annotatedWith(Names.named("fileName")).toInstance("c:\\movies.csv");
             bind(Boolean.class).annotatedWith(Names.named("existTitleRow")).toInstance(true);
 
             // Make Local Similarity Function
@@ -102,15 +109,16 @@ public class RecommenderSystemConfiguration extends AbstractModule {
             bind(Integer.class).toInstance(10);
             bind(GlobalSimilarityFunction.class).to(Average.class);
             bind(new TypeLiteral<List<LocalSimilarityConfiguration>>() {}).toInstance(configurations);
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }/* catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/ catch (MalformedURLException e) {
-            e.printStackTrace();
         }
-
     }
-	
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
+    }
 }
