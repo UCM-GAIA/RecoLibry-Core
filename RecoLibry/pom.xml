@@ -179,7 +179,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>es.ucm.fdi.gaia.recolibry.App</mainClass>
+                            <mainClass>es.ucm.fdi.gaia.recolibry.examples.test1.App</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

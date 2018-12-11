@@ -4,7 +4,6 @@ import com.google.inject.AbstractModule;
 import es.ucm.fdi.gaia.recolibry.RecommenderSystemFactory;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
-import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 
 import java.util.List;

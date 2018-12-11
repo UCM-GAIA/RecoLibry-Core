@@ -67,14 +67,14 @@ public class CSVConnector implements Connector {
 				//TODO - Hay que saber los tipos de datos para castearlos
 				List<Object> parameters = new ArrayList<>();
 				parameters.add(Integer.valueOf(nextLine[0]));
-				/*
-				Esto es para Movies
 
-				parameters.add(nextLine[1]);
-				parameters.add(nextLine[2].split("\\|"));
-				*/
+//				Esto es para Movies
 
-				int[] features = new int[28];
+//				parameters.add(nextLine[1]);
+//				parameters.add(nextLine[2].split("\\|"));
+
+
+				Integer[] features = new Integer[28];
 				for(int i = 1; i < nextLine.length - 1; i++)
 					features[i - 1] = Integer.parseInt(nextLine[i]);
 

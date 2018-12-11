@@ -93,7 +93,7 @@ public class VideosRecSysConfiguration extends AbstractModule {
             BeansFactory factory = new BeansFactory(clazz);
 
             bind(BeansFactory.class).annotatedWith(Names.named("beansFactory")).toInstance(factory);
-            bind(String.class).annotatedWith(Names.named("fileName")).toInstance("/Users/jljorro/Documents/Programacion/Develop/RecoLibry/RecoLibry-Core/RecoLibry/src/main/resources/videos_features.csv");
+            bind(String.class).annotatedWith(Names.named("fileName")).toInstance("c:\\videos_features.csv");
             bind(Boolean.class).annotatedWith(Names.named("existTitleRow")).toInstance(true);
 
             // Make Local Similarity
