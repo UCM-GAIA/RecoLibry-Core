@@ -1,5 +1,6 @@
 package es.ucm.fdi.gaia.recolibry;
 
+import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -11,8 +12,8 @@ public class RecommenderSystemFactory {
 	
 	public RecommenderSystemFactory() {}
 	
-	public void makeRecommender() {
-		Injector injector = Guice.createInjector(new RecommenderSystemConfiguration());
+	public void makeRecommender(AbstractModule recommenderConfiguration) {
+		Injector injector = Guice.createInjector(recommenderConfiguration);
 		recommender = injector.getInstance(RecommenderSystem.class);
 	}
 	

@@ -37,7 +37,7 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 	private GlobalSimilarityFunction globalSimFunction;
 	private List<LocalSimilarityConfiguration> configurations;
 	
-	private CBRCaseBase casebase;
+	private CBRCaseBase caseBase;
 	
 	private List<RecommenderResult> recommenderResults;
 
@@ -84,7 +84,7 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 	/* jCOLIBRI Methods */
 	
 	public void configure() throws ExecutionException {
-		casebase = new LinealCaseBase();
+		caseBase = new LinealCaseBase();
 	}
 
 	public void cycle(CBRQuery query) throws ExecutionException {
@@ -95,7 +95,7 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 		for (LocalSimilarityConfiguration conf : configurations)
 			config.addMapping(new Attribute(conf.getAttributeName(), conf.getClazz()), conf.getSimilarityFunction());
 		
-		List<RetrievalResult> rr = NNScoringMethod.evaluateSimilarity(casebase.getCases(), query, config);
+		List<RetrievalResult> rr = NNScoringMethod.evaluateSimilarity(caseBase.getCases(), query, config);
 		
 		recommenderResults = new ArrayList<RecommenderResult>();
 		for (int i=0; i < kNeighbourhood; i++) {
@@ -105,12 +105,12 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 	}
 
 	public void postCycle() throws ExecutionException {
-		casebase.close();
+		caseBase.close();
 	}
 
 	public CBRCaseBase preCycle() throws ExecutionException {
-		casebase.init(connector);
-		return casebase;
+		caseBase.init(connector);
+		return caseBase;
 	}
 
 }

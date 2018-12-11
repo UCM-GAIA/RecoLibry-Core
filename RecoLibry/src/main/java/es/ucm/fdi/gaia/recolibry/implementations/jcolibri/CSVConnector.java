@@ -1,5 +1,15 @@
 package es.ucm.fdi.gaia.recolibry.implementations.jcolibri;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
+import com.opencsv.CSVReader;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseBaseFilter;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
+import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
+import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
+import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,18 +20,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
-import com.opencsv.CSVReader;
-
-import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
-import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseBaseFilter;
-import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
-import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
-import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
-import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
-import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 
 /**
  * Connector to read CSV file and use it in jCOLIBRI. It transforms the
@@ -69,12 +67,23 @@ public class CSVConnector implements Connector {
 				//TODO - Hay que saber los tipos de datos para castearlos
 				List<Object> parameters = new ArrayList<>();
 				parameters.add(Integer.valueOf(nextLine[0]));
+				/*
+				Esto es para Movies
+
 				parameters.add(nextLine[1]);
 				parameters.add(nextLine[2].split("\\|"));
+				*/
+
+				int[] features = new int[28];
+				for(int i = 1; i < nextLine.length - 1; i++)
+					features[i - 1] = Integer.parseInt(nextLine[i]);
+
+				parameters.add(features);
+				parameters.add(nextLine[nextLine.length - 1]);
 
 				CBRCase c = new CBRCase();
 				c.setDescription((CaseComponent) beansFactory.getBeanWithParameters(parameters));
-				
+
 				cases.add(c);
 			}
 			

@@ -3,7 +3,6 @@ package es.ucm.fdi.gaia.recolibry.utils;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BeansFactory {
 

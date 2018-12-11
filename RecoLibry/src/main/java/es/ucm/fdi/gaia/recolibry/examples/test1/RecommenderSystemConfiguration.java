@@ -1,4 +1,4 @@
-package es.ucm.fdi.gaia.recolibry;
+package es.ucm.fdi.gaia.recolibry.examples.test1;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;

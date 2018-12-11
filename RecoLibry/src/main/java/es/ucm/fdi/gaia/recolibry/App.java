@@ -2,9 +2,11 @@ package es.ucm.fdi.gaia.recolibry;
 
 import java.util.List;
 
+import com.google.inject.AbstractModule;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
 import es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase;
+import es.ucm.fdi.gaia.recolibry.examples.test1.RecommenderSystemConfiguration;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 
 /**
@@ -15,8 +17,9 @@ public class App {
     
 	public static void main(String[] args){
 		// RecommenderAlgorithm algorithm = new RecommenderJColibri();
+		AbstractModule configuration = new RecommenderSystemConfiguration();
 		RecommenderSystemFactory factory = new RecommenderSystemFactory();
-		factory.makeRecommender();
+		factory.makeRecommender(configuration);
 		RecommenderAlgorithm algorithm = factory.getRecommender().getAlgorithm(); 
 		
 		
