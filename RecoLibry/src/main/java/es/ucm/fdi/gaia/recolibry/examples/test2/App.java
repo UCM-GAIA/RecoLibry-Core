@@ -12,6 +12,8 @@ public class App {
 
     public static void main(String[] args) {
 
+        System.out.println(System.getProperty("user.dir"));
+
         AbstractModule configuration = new VideosRecSysConfiguration();
         RecommenderSystemFactory factory = new RecommenderSystemFactory();
         factory.makeRecommender(configuration);
@@ -20,7 +22,7 @@ public class App {
 
         // Prepare Query
         QueryJColibri query = new QueryJColibri();
-        VideoDescription v = new VideoDescription(0, new Integer[]{1,0,0,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, "ojos");
+        VideoDescription v = new VideoDescription(0, new Integer[]{1,0,0,0,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1}, "extremidades");
         query.setDescription(v);
 
         algorithm.init();

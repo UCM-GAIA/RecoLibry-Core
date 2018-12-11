@@ -8,7 +8,6 @@ import com.jiowa.codegen.config.JiowaCodeGenConfig;
 import es.ucm.fdi.gaia.codegen.tests.ClassGenerator;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
-import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equal;
 import es.ucm.fdi.gaia.recolibry.api.Query;
@@ -52,7 +51,7 @@ public class VideosRecSysConfiguration extends AbstractModule {
         JiowaCodeGeneratorEngine engine = new JiowaCodeGeneratorEngine(classGenerator);
         engine.start();
 
-        setFile(System.getProperty("user.dir") + "\\src\\main\\java\\" + packageName.replace(".", "\\") + "\\VideoDescription2.java");
+        setFile(System.getProperty("user.dir") + "/src/main/java/" + packageName.replace(".", "/") + "/VideoDescription2.java");
 
     }
 
@@ -93,14 +92,16 @@ public class VideosRecSysConfiguration extends AbstractModule {
             BeansFactory factory = new BeansFactory(clazz);
 
             bind(BeansFactory.class).annotatedWith(Names.named("beansFactory")).toInstance(factory);
-            bind(String.class).annotatedWith(Names.named("fileName")).toInstance("c:\\videos_features.csv");
+            bind(String.class).annotatedWith(Names.named("fileName")).toInstance(System.getProperty("user.dir") + "/csv/videos_features.csv");
             bind(Boolean.class).annotatedWith(Names.named("existTitleRow")).toInstance(true);
 
             // Make Local Similarity
             List<LocalSimilarityConfiguration> configurations = new ArrayList<>();
-            LocalSimilarityConfiguration conf = new LocalSimilarityConfiguration("features", VideoDescription.class, new FeaturesSimilarity());
+            LocalSimilarityConfiguration conf = new LocalSimilarityConfiguration("features", clazz, new FeaturesSimilarity());
+           // conf.setWeight(0.5);
             configurations.add(conf);
-            LocalSimilarityConfiguration conf2 = new LocalSimilarityConfiguration("category", VideoDescription.class, new Equal());
+            LocalSimilarityConfiguration conf2 = new LocalSimilarityConfiguration("category", clazz, new Equal());
+           // conf2.setWeight(0.5);
             configurations.add(conf2);
 
 

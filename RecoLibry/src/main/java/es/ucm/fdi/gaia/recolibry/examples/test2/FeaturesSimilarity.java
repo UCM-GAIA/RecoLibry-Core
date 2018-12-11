@@ -8,13 +8,13 @@ public class FeaturesSimilarity implements LocalSimilarityFunction {
     @Override
     public double compute(Object caseObject, Object queryObject) throws NoApplicableSimilarityFunctionException {
 
-        int[] caseFeatures = (int[]) caseObject;
-        int[] queryFeatures = (int[]) queryObject;
+        Integer[] caseFeatures = (Integer[]) caseObject;
+        Integer[] queryFeatures = (Integer[]) queryObject;
 
         double similarity = 0.0;
 
         for(int i=0; i < caseFeatures.length; i++)
-            similarity += caseFeatures[i] * queryFeatures[i];
+            similarity += (caseFeatures[i] == queryFeatures[i]? 1: 0);
 
         return similarity / caseFeatures.length;
     }
@@ -22,7 +22,7 @@ public class FeaturesSimilarity implements LocalSimilarityFunction {
     @Override
     public boolean isApplicable(Object caseObject, Object queryObject) {
         if (caseObject != null && queryObject != null &&
-                caseObject instanceof int[] && queryObject instanceof int[])
+                caseObject instanceof Integer[] && queryObject instanceof Integer[])
             return true;
         else
             return false;

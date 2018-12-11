@@ -92,8 +92,11 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 		
 		config.setDescriptionSimFunction(globalSimFunction);
 		
-		for (LocalSimilarityConfiguration conf : configurations)
+		for (LocalSimilarityConfiguration conf : configurations) {
 			config.addMapping(new Attribute(conf.getAttributeName(), conf.getClazz()), conf.getSimilarityFunction());
+			if(conf.getWeight() != null)
+				config.setWeight(new Attribute(conf.getAttributeName(), conf.getClazz()), conf.getWeight());
+		}
 		
 		List<RetrievalResult> rr = NNScoringMethod.evaluateSimilarity(caseBase.getCases(), query, config);
 		

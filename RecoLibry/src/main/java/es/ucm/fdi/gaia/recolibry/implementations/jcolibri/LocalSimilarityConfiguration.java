@@ -17,6 +17,7 @@ public class LocalSimilarityConfiguration {
 	private String attributeName;
 	private Class<?> clazz;
 	private LocalSimilarityFunction similarityFunction;
+	private Double weight;
 	
 	@Inject
 	public LocalSimilarityConfiguration(String attributeName, Class<?> clazz, LocalSimilarityFunction similarityFunction) {
@@ -24,6 +25,7 @@ public class LocalSimilarityConfiguration {
 		this.attributeName = attributeName;
 		this.clazz = clazz;
 		this.similarityFunction = similarityFunction;
+		this.weight = null;
 	}
 
 	public String getAttributeName() {
@@ -38,4 +40,11 @@ public class LocalSimilarityConfiguration {
 		return similarityFunction;
 	}
 
+	public void setWeight(Double weight) {
+		this.weight = weight;
+	}
+
+	public Double getWeight() {
+		return weight;
+	}
 }
