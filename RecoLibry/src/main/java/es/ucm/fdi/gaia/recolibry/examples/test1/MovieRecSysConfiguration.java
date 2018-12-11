@@ -1,32 +1,24 @@
 package es.ucm.fdi.gaia.recolibry.examples.test1;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.name.Names;
 import com.jiowa.codegen.JiowaCodeGeneratorEngine;
 import com.jiowa.codegen.config.JiowaCodeGenConfig;
-import es.ucm.fdi.gaia.codegen.tests.ClassGenerator;
+import es.ucm.fdi.gaia.recolibry.utils.ClassGenerator;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.global.Average;
 import es.ucm.fdi.gaia.recolibry.api.Query;
+import es.ucm.fdi.gaia.recolibry.api.RecSysConfiguration;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
-import es.ucm.fdi.gaia.recolibry.examples.test1.GenresSimilarity;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.CSVConnector;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.LocalSimilarityConfiguration;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.RecommenderJColibri;
 import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 
-import javax.tools.*;
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,11 +28,10 @@ import java.util.List;
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
  */
-public class MovieRecSysConfiguration extends AbstractModule {
+public class MovieRecSysConfiguration extends RecSysConfiguration {
 
-    private String file = "";
-
-    private void generateClass() {
+    @Override
+    protected void generateClass() {
         String packageName = "es.ucm.fdi.gaia.recolibry.examples.test1";
 
         String[] attr1 = new String[] {"id", "Integer"};
@@ -62,29 +53,13 @@ public class MovieRecSysConfiguration extends AbstractModule {
         JiowaCodeGeneratorEngine engine = new JiowaCodeGeneratorEngine(classGenerator);
         engine.start();
 
-        setFile(System.getProperty("user.dir") + "\\src\\main\\java\\" + packageName.replace(".", "\\") + "\\MovieCase2.java");
+        file = System.getProperty("user.dir").replace("\\","/") + "/src/main/java/" + packageName.replace(".", "/") + "/MovieCase2.java";
+        file.replace("/", System.getProperty("path.separator"));
 
-    }
-
-    private void compile(){
-        try {
-            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-            StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
-            File output = new File("target/classes");
-            //output.mkdirs(); // Creo que no hace falta porque ya existe el target/classes :)
-            fileManager.setLocation(StandardLocation.CLASS_OUTPUT, Collections.singletonList(output));
-            List<File> classesToCompile = new ArrayList<>();
-            classesToCompile.add(new File(getFile()));
-            Iterable<? extends JavaFileObject> compilationUnits1 = fileManager.getJavaFileObjectsFromFiles(classesToCompile);
-            compiler.getTask(null, fileManager, null, null, null, compilationUnits1).call();
-        } catch (IOException e) {
-            System.out.println("----> Error compilando ficheros");
-        }
     }
 
 	@Override
 	protected void configure() {
-		//TODO - Estoy hay que convertirlo en un fichero JSON que se pueda leer.
         try {
             // Configuración del sistema recomendador
             bind(RecommenderAlgorithm.class).to(RecommenderJColibri.class);
@@ -110,6 +85,8 @@ public class MovieRecSysConfiguration extends AbstractModule {
             bind(GlobalSimilarityFunction.class).to(Average.class);
             bind(new TypeLiteral<List<LocalSimilarityConfiguration>>() {}).toInstance(configurations);
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
