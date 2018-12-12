@@ -27,4 +27,7 @@ public class BeansFactory {
         return beanObject;
     }
 
+    public Class<?> getClazz() {
+        return clazz;
+    }
 }

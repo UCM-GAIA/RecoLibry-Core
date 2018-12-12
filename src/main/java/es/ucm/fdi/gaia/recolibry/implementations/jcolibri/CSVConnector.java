@@ -3,6 +3,7 @@ package es.ucm.fdi.gaia.recolibry.implementations.jcolibri;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.opencsv.CSVReader;
+import com.opencsv.bean.CsvToBeanBuilder;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCase;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseBaseFilter;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
@@ -10,10 +11,7 @@ import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
 import es.ucm.fdi.gaia.jcolibri.exception.InitializingException;
 import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -45,15 +43,27 @@ public class CSVConnector implements Connector {
 		init();
 	}
 
-	private void init() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-		try {
+	private void init() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, FileNotFoundException {
+
+	    Class<?> clazz = beansFactory.getClazz();
+	    List<CaseComponent> beans = new CsvToBeanBuilder(new FileReader("fileName")).withType(clazz).build().parse();
+
+	    cases = new ArrayList<>();
+	    for(CaseComponent c : beans) {
+	        CBRCase cbrCase = new CBRCase();
+	        cbrCase.setDescription(c);
+	        cases.add(cbrCase);
+        }
+
+	    //try {
+
 			// Open CSV file
-			FileInputStream fis = new FileInputStream(fileName);
+			/*FileInputStream fis = new FileInputStream(fileName);
 			InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
 			CSVReader reader = new CSVReader(isr);
 			
 			// Create list of cases to save information
-			cases = new ArrayList<CBRCase>();
+			cases = new ArrayList<>();
 			
 			// Read Cases
 			// TODO - Generalizar
@@ -93,7 +103,7 @@ public class CSVConnector implements Connector {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 

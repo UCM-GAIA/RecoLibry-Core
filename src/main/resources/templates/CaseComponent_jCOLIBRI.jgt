@@ -1,5 +1,7 @@
 package <<PackageName>>;
 
+import com.opencsv.bean.CsvBindByName;
+
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 
