@@ -58,38 +58,42 @@ public class VideosRecSysConfiguration extends RecSysConfiguration {
     protected void configure() {
 
         try {
+
+            // Step 1: Generate bean class to save items
+            generateClass();
+            compile();
+            Class clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test2.VideoDescription");
+
+            // Step 2: Configure a BeansFactory to create beans objects
+            BeansFactory factory = new BeansFactory(clazz);
+
+            // Step 3: Inject the recommender algorithm and its corresponding query
             bind(RecommenderAlgorithm.class).to(RecommenderJColibri.class);
             bind(Query.class).to(QueryJColibri.class);
 
-            // Generar dinamicamente la clase para los casos
-
-            generateClass();
-            compile();
-            Class clazz = null;
-
-            clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test2.VideoDescription");
-
-            BeansFactory factory = new BeansFactory(clazz);
-
+            // Step 4: jCOLIBRI needs a connectos. We inject all elements needed in CSVConnector
             bind(BeansFactory.class).annotatedWith(Names.named("beansFactory")).toInstance(factory);
             bind(String.class).annotatedWith(Names.named("fileName")).toInstance(System.getProperty("user.dir") + "/csv/videos_features.csv");
             bind(Boolean.class).annotatedWith(Names.named("existTitleRow")).toInstance(true);
 
-            // Make Local Similarity
+            // Step 5: jCOLIBRI needs a local similarity funcitons. We create a local similarity fuction per item attribute.
+
             List<LocalSimilarityConfiguration> configurations = new ArrayList<>();
+
             LocalSimilarityConfiguration conf = new LocalSimilarityConfiguration("features", clazz, new FeaturesSimilarity());
-           // conf.setWeight(0.5);
+            conf.setWeight(0.5); // It is optional. It is the weight of this attribute in the global similarity
             configurations.add(conf);
+
             LocalSimilarityConfiguration conf2 = new LocalSimilarityConfiguration("category", clazz, new Equal());
-           // conf2.setWeight(0.5);
+            conf2.setWeight(0.5); // It is optional. It is the weight of this attribute in the global similarity
             configurations.add(conf2);
 
-
-            // Configuración de RecommenderJColibri
+            // Step 6: Inject all elements needed in RecommenderJCOLIBRI
             bind(Connector.class).to(CSVConnector.class);
-            bind(Integer.class).toInstance(10);
+            bind(Integer.class).toInstance(10); // Number of neighborhood used to make the recomendation
             bind(GlobalSimilarityFunction.class).to(Average.class);
             bind(new TypeLiteral<List<LocalSimilarityConfiguration>>() {}).toInstance(configurations);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
