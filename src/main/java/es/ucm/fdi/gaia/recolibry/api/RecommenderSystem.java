@@ -22,16 +22,20 @@ public class RecommenderSystem {
 		this.query = query;
 	}
 
-	public RecommenderAlgorithm getAlgorithm() {
-		return algorithm;
-	}
-
 	public Query getQuery() {
 		return query;
+	}
+
+	public void initRecommender() {
+		algorithm.init();
 	}
 	
 	public List<RecommenderResult> recommend(Query query) {
 		return algorithm.recommend(query);
+	}
+
+	public void closeRecommender() {
+		algorithm.close();
 	}
 	
 }

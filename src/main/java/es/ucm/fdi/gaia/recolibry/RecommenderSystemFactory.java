@@ -10,7 +10,7 @@ import es.ucm.fdi.gaia.recolibry.api.RecommenderSystem;
 public class RecommenderSystemFactory {
 	
 	private RecommenderSystem recommender;
-	
+
 	public RecommenderSystemFactory() {}
 	
 	public void makeRecommender(AbstractModule recommenderConfiguration) {
@@ -22,10 +22,6 @@ public class RecommenderSystemFactory {
 		
 	}
 
-	public Query getQuery() {
-		return null;
-	}
-	
 	public RecommenderSystem getRecommender() {
 		return recommender;
 	}
