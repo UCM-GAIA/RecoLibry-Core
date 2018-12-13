@@ -29,20 +29,23 @@ public class VideosRecSysConfiguration extends RecSysConfiguration {
         String packageName = "es.ucm.fdi.gaia.recolibry.examples.test2";
 
         String[] attr1 = new String[] {"id", "Integer"};
-        String[] attr2 = new String[] {"features", "Integer[]"};
+        String[] attr2 = new String[] {"features", "Integer"};
         String[] attr3 = new String[] {"category", "String"};
 
         List<String[]> attributes = new ArrayList<>();
         attributes.add(attr1);
-        attributes.add(attr2);
         attributes.add(attr3);
+
+        List<String[]> attributesList = new ArrayList<>();
+        attributesList.add(attr2);
 
         JiowaCodeGenConfig config = new JiowaCodeGenConfig("codegen.properties");
 
         ClassGenerator classGenerator = new ClassGenerator(config);
-        classGenerator.setClassName("VideoDescription2");
+        classGenerator.setClassName("VideoDescription");
         classGenerator.setPackageName("es.ucm.fdi.gaia.recolibry.examples.test2");
         classGenerator.setAttributes(attributes);
+        classGenerator.setAttributesList(attributesList);
 
         JiowaCodeGeneratorEngine engine = new JiowaCodeGeneratorEngine(classGenerator);
         engine.start();
@@ -64,7 +67,7 @@ public class VideosRecSysConfiguration extends RecSysConfiguration {
             compile();
             Class clazz = null;
 
-            clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test2.VideoDescription2");
+            clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test2.VideoDescription");
 
             BeansFactory factory = new BeansFactory(clazz);
 
