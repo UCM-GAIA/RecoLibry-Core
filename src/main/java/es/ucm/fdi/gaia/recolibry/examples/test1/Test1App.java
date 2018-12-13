@@ -1,11 +1,7 @@
 package es.ucm.fdi.gaia.recolibry.examples.test1;
 
-import com.google.inject.AbstractModule;
 import es.ucm.fdi.gaia.recolibry.RecommenderSystemFactory;
-import es.ucm.fdi.gaia.recolibry.api.Query;
-import es.ucm.fdi.gaia.recolibry.api.RecSysConfiguration;
-import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
-import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
+import es.ucm.fdi.gaia.recolibry.api.*;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 
 import java.util.ArrayList;
@@ -19,29 +15,35 @@ public class Test1App {
     
 	public static void main(String[] args){
 
-		RecSysConfiguration configuration = new MovieRecSysConfiguration();
+        // Define the Recommender System Configuration
+        RecSysConfiguration configuration = new MovieRecSysConfiguration();
+
+        // Make a new instance of Recommender System
 		RecommenderSystemFactory factory = new RecommenderSystemFactory();
 		factory.makeRecommender(configuration);
 
-		RecommenderAlgorithm algorithm = factory.getRecommender().getAlgorithm();
-		
-		// Prepare Query
-		//TODO - Pensar como devolver la query
+        RecommenderSystem recSys = factory.getRecommender();
 
+        // Get a Query used by Recommender System
+        Query query = recSys.getQuery();
+
+        // Insert data into query object
 		List<String> genres = new ArrayList<>();
 		String[] genresArray = new String[]{"Adventure", "Children", "Fantasy"};
-
 		for(int i=0; i < genresArray.length; i++)
 			genres.add(genresArray[i]);
 
-		QueryJColibri query = new QueryJColibri();
 		MovieCase c = new MovieCase(0, null, genres);
-		query.setDescription(c);
-		
-		algorithm.init();
-		List<RecommenderResult> results = algorithm.recommend(query);
-		algorithm.close();
-		
+		query.setBean(c);
+
+        // Execute a recommendation using this query
+		recSys.initRecommender();
+		List<RecommenderResult> results = recSys.recommend(query);
+
+        // Close recommender system
+		recSys.closeRecommender();
+
+        // Print the result of recommender system
 		for(RecommenderResult r : results)
 			System.out.println(r);
 		
