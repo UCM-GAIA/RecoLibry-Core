@@ -36,24 +36,28 @@ public class MovieRecSysConfiguration extends RecSysConfiguration {
 
         String[] attr1 = new String[] {"id", "Integer"};
         String[] attr2 = new String[] {"title", "String"};
-        String[] attr3 = new String[] {"genres", "String[]"};
+        String[] attr3 = new String[] {"genres", "String"};
 
         List<String[]> attributes = new ArrayList<>();
         attributes.add(attr1);
         attributes.add(attr2);
-        attributes.add(attr3);
+        //attributes.add(attr3);
+
+        List<String[]> attributesList = new ArrayList<>();
+        attributesList.add(attr3);
 
         JiowaCodeGenConfig config = new JiowaCodeGenConfig("codegen.properties");
 
         ClassGenerator classGenerator = new ClassGenerator(config);
-        classGenerator.setClassName("MovieCase2");
+        classGenerator.setClassName("MovieCase");
         classGenerator.setPackageName("es.ucm.fdi.gaia.recolibry.examples.test1");
         classGenerator.setAttributes(attributes);
+        classGenerator.setAttributesList(attributesList);
 
         JiowaCodeGeneratorEngine engine = new JiowaCodeGeneratorEngine(classGenerator);
         engine.start();
 
-        file = System.getProperty("user.dir").replace("\\","/") + "/src/main/java/" + packageName.replace(".", "/") + "/MovieCase2.java";
+        file = System.getProperty("user.dir").replace("\\","/") + "/src/main/java/" + packageName.replace(".", "/") + "/MovieCase.java";
         file.replace("/", System.getProperty("path.separator"));
 
     }
@@ -67,11 +71,11 @@ public class MovieRecSysConfiguration extends RecSysConfiguration {
 
             generateClass();
             compile();
-            Class clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase2");
+            Class clazz = Class.forName("es.ucm.fdi.gaia.recolibry.examples.test1.MovieCase");
             BeansFactory factory = new BeansFactory(clazz);
 
             bind(BeansFactory.class).annotatedWith(Names.named("beansFactory")).toInstance(factory);
-            bind(String.class).annotatedWith(Names.named("fileName")).toInstance("c:\\movies.csv");
+            bind(String.class).annotatedWith(Names.named("fileName")).toInstance(System.getProperty("user.dir") + "/csv/movies.csv");
             bind(Boolean.class).annotatedWith(Names.named("existTitleRow")).toInstance(true);
 
             // Make Local Similarity Function

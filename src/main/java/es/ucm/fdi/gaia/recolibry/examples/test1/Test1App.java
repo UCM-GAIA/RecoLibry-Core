@@ -8,6 +8,7 @@ import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,9 +27,16 @@ public class Test1App {
 		
 		// Prepare Query
 		//TODO - Pensar como devolver la query
-		Query query = factory.getQuery();
-		/*MovieCase c = new MovieCase(0, null, new String[]{"Adventure", "Children", "Fantasy"});
-		query.setDescription(c);*/
+
+		List<String> genres = new ArrayList<>();
+		String[] genresArray = new String[]{"Adventure", "Children", "Fantasy"};
+
+		for(int i=0; i < genresArray.length; i++)
+			genres.add(genresArray[i]);
+
+		QueryJColibri query = new QueryJColibri();
+		MovieCase c = new MovieCase(0, null, genres);
+		query.setDescription(c);
 		
 		algorithm.init();
 		List<RecommenderResult> results = algorithm.recommend(query);
