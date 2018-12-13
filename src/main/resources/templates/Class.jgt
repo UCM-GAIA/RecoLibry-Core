@@ -2,11 +2,15 @@ package <<PackageName>>;
   
 public class <<ClassName>> implements <<InterfaceName>>
 { 
-    << foreachAttribute --> Attribute.jgt />> 
+    << foreachAttribute --> Attribute.jgt />>
+
+    << foreachAttributeList --> AttributeList.jgt />>
     
     << Include <-- Constructor.jgt />>
     
-    << foreachAttribute --> Getter.jgt />> 
+    << foreachAttribute --> Getter.jgt />>
+
+    << foreachAttributeList --> GetterList.jgt />>
     
     // {{ProtectedRegionStart::ManuallyWrittenCode}}    
         // ...

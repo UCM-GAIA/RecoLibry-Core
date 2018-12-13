@@ -1,0 +1,2 @@
+@CsvBindAndSplitByName(elementType= <<DataType>>.class, splitOn="\\|")
+public << <-- AttributeListDeclaration.jgt >>;

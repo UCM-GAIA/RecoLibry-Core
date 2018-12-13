@@ -1,21 +1,31 @@
 package <<PackageName>>;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindAndSplitByName;
 
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class <<ClassName>> implements CaseComponent {
 
-	<< foreachAttribute --> Attribute.jgt />> 
+	<< foreachAttribute --> Attribute.jgt />>
+
+	<< foreachAttributeList --> AttributeList.jgt />>
 	
 	<< Include <-- Constructor.jgt />>
+
+	public <<ClassName>>() { }
 	
 	public Attribute getIdAttribute() {
 		return new Attribute("id", <<ClassName>>.class);
 	}
 
     << foreachAttribute --> Getter.jgt />>
+
+    << foreachAttributeList --> GetterList.jgt />>
     
     // {{ProtectedRegionStart::ManuallyWrittenCode}}    
         // ...
