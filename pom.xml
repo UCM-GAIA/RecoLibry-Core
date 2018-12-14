@@ -4,85 +4,56 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com</groupId>
+    <groupId>com.github.jljorro</groupId>
     <artifactId>RecoLibry-Core</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>RecoLibry-Core</name>
+    <description>A JAVA framework to make recommender systems.</description>
+    <url>https://github.com/jljorro/RecoLibry-Core</url>
+
+    <licenses>
+        <license>
+            <name>The GNU Lesser General Public License, Version 3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jose L. Jorro-Aragoneses</name>
+            <email>jljorro@ucm.es</email>
+            <organizationUrl>https://github.com/jljorro/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/jljorro/RecoLibry-Core.git</connection>
+        <developerConnection>scm:git:ssh://github.com:jljorro/RecoLibry-Core.git</developerConnection>
+        <url>http://github.com/jljorro/RecoLibry-Core/tree/master</url>
+    </scm>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javadoc.version>2.10.3</javadoc.version>
     </properties>
 
-    <!-- ===================================================================== -->
-    <!-- ATTENTION:                                                            -->
-    <!-- Due to problems with the Maven4Eclipse plug-in we needed to add some  -->
-    <!-- configs especially for eclipse to make it work everywhere             -->
-    <!-- ===================================================================== -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
 
     <build>
-
-        <!-- ======================================= -->
-        <!-- Plugin Management for Eclipse Lifecycle -->
-        <!-- ======================================= -->
-
-        <pluginManagement>
-
-            <plugins>
-
-                <!-- The following plugin configuration is needed to store -->
-                <!-- Eclipse Maven4Eclipse settings only.                  -->
-                <!-- It has no influence on the Maven build itself.        -->
-
-                <plugin>
-
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-
-                                <!-- Needed for lifecycle mapping: java goal (calling a java main class) -->
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>exec-maven-plugin</artifactId>
-                                        <versionRange>[1.0,)</versionRange>
-                                        <goals>
-                                            <goal>exec</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>true</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
-
-                                <!-- Needed for lifecycle mapping: add-source goal (adding source trees to build class path) -->
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>build-helper-maven-plugin</artifactId>
-                                        <versionRange>[1.0,)</versionRange>
-                                        <goals>
-                                            <goal>add-source</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>true</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
-
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-
-            </plugins>
-
-        </pluginManagement>
 
         <!-- ============= -->
         <!--    Plugins    -->
@@ -174,17 +145,23 @@
                 </configuration>
             </plugin>
 
+            <!-- Make Javadoc -->
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.version}</version>
+            </plugin>
+
+            <!-- Configuration to sign project -->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>es.ucm.fdi.gaia.recolibry.examples.test1.Test1App</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
 
@@ -268,6 +245,12 @@
             <groupId>es.ucm.fdi.gaia</groupId>
             <artifactId>jCOLIBRI</artifactId>
             <version>3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mahout</groupId>
+            <artifactId>mahout-core</artifactId>
+            <version>0.9</version>
         </dependency>
 
         <!-- Test Dependencies -->
