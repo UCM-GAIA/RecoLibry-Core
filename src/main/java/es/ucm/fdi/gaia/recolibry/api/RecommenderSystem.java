@@ -10,7 +10,7 @@ import com.google.inject.Inject;
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
  */
-public class RecommenderSystem {
+public abstract class RecommenderSystem {
 
 	private RecommenderAlgorithm algorithm;
 	private Query query;

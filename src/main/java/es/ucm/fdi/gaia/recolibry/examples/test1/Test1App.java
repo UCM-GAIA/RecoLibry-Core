@@ -1,15 +1,14 @@
 package es.ucm.fdi.gaia.recolibry.examples.test1;
 
-import es.ucm.fdi.gaia.recolibry.RecommenderSystemFactory;
+import es.ucm.fdi.gaia.recolibry.api.RecommenderSystemFactory;
 import es.ucm.fdi.gaia.recolibry.api.*;
-import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.QueryJColibri;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Hello world!
- *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
  */
 public class Test1App {
     

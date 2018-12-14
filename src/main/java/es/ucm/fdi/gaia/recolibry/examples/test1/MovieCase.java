@@ -9,6 +9,10 @@ import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MovieCase implements CaseComponent {
 
     @CsvBindByName

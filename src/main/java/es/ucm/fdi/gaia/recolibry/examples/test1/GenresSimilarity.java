@@ -5,6 +5,10 @@ import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimi
 
 import java.util.List;
 
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class GenresSimilarity implements LocalSimilarityFunction {
 
 	public double compute(Object caseObject, Object queryObject) throws NoApplicableSimilarityFunctionException {

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public abstract class RecSysConfiguration extends AbstractModule {
 
     protected String file;

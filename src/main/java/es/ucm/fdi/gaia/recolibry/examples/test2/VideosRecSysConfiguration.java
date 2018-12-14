@@ -22,6 +22,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class VideosRecSysConfiguration extends RecSysConfiguration {
 
     @Override

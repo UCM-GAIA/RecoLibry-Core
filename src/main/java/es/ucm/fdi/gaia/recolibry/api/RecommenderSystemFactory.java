@@ -1,19 +1,19 @@
-package es.ucm.fdi.gaia.recolibry;
+package es.ucm.fdi.gaia.recolibry.api;
 
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import es.ucm.fdi.gaia.recolibry.api.Query;
-import es.ucm.fdi.gaia.recolibry.api.RecommenderSystem;
-
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class RecommenderSystemFactory {
 	
 	private RecommenderSystem recommender;
 
 	public RecommenderSystemFactory() {}
 	
-	public void makeRecommender(AbstractModule recommenderConfiguration) {
+	public void makeRecommender(RecSysConfiguration recommenderConfiguration) {
 		Injector injector = Guice.createInjector(recommenderConfiguration);
 		recommender = injector.getInstance(RecommenderSystem.class);
 	}

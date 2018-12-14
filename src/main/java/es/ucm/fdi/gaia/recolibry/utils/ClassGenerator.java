@@ -9,6 +9,10 @@ import com.model.codegen.beans.AttributeList_jgt;
 import com.model.codegen.beans.Attribute_jgt;
 import com.model.codegen.beans.CaseComponent_jCOLIBRI_jgt;
 
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class ClassGenerator extends AbstractGenerator{
 	
 	private String className;

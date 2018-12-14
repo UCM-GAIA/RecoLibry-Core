@@ -1,5 +1,9 @@
 package es.ucm.fdi.gaia.recolibry.api;
 
+/**
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class RecommenderResult {
 	
 	private Object item;

@@ -18,7 +18,7 @@ import java.util.*;
  * AUTOMATICALLY GENERATED <br>
  *  
  * Template Bean: AttributeList_jgt <br>
- * Generation Timestamp: Thu Dec 13 14:19:38 CET 2018 <br>
+ * Generation Timestamp: Fri Dec 14 14:58:48 CET 2018 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
