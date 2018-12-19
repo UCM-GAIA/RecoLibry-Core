@@ -15,11 +15,14 @@ public class Test1App {
 	public static void main(String[] args){
 
         // Define the Recommender System Configuration
-        RecSysConfiguration configuration = new MovieRecSysConfiguration();
+        /*RecSysConfiguration configuration = new MovieRecSysConfiguration();
 
         // Make a new instance of Recommender System
 		RecommenderSystemFactory factory = new RecommenderSystemFactory();
-		factory.makeRecommender(configuration);
+		factory.makeRecommender(configuration);*/
+
+        RecommenderSystemFactory factory = new RecommenderSystemFactory();
+        factory.makeRecommenderByJson("./json_files/configure.json");
 
         RecommenderSystem recSys = factory.getRecommender();
 

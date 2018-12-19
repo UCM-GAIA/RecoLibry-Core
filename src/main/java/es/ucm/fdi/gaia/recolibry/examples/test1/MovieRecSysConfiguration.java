@@ -63,6 +63,7 @@ public class MovieRecSysConfiguration extends RecSysConfiguration {
 
 	@Override
 	protected void configure() {
+
         try {
 
             // Step 1: Generate bean class to save items
@@ -76,6 +77,7 @@ public class MovieRecSysConfiguration extends RecSysConfiguration {
             // Step 3: Inject the recommender algorithm and its corresponding query
             bind(RecommenderAlgorithm.class)
                     .to(RecommenderJColibri.class);
+
             bind(Query.class)
                     .to(QueryJColibri.class);
 
@@ -91,7 +93,7 @@ public class MovieRecSysConfiguration extends RecSysConfiguration {
                     .toInstance(true);
 
             // Step 5: jCOLIBRI needs a local similarity funcitons. We create a local similarity fuction per item attribute.
-            List<LocalSimilarityConfiguration> configurations = new ArrayList<LocalSimilarityConfiguration>();
+            List<LocalSimilarityConfiguration> configurations = new ArrayList<>();
             LocalSimilarityConfiguration conf = new LocalSimilarityConfiguration("genres", clazz, new GenresSimilarity());
             configurations.add(conf);
 
