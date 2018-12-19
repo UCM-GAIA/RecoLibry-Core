@@ -19,7 +19,9 @@ public class RecommenderSystemFactory {
 	}
 	
 	public void makeRecommenderByJson(String file) {
-		
+		JsonRecSysConfiguration configuration = new JsonRecSysConfiguration(file);
+		Injector injector = Guice.createInjector(configuration);
+		recommender = injector.getInstance(RecommenderSystem.class);
 	}
 
 	public RecommenderSystem getRecommender() {
