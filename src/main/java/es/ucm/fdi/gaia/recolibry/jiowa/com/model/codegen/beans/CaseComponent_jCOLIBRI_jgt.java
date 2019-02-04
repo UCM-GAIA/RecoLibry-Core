@@ -1,5 +1,5 @@
 //
-// AUTOMATICALLY GENERATED from template file Class.jgt
+// AUTOMATICALLY GENERATED from template file CaseComponent_jCOLIBRI.jgt
 // 
 // by the Jiowa Code Generation Framework (www.jiowa.de)
 //
@@ -17,8 +17,8 @@ import java.util.*;
 /**
  * AUTOMATICALLY GENERATED <br>
  *  
- * Template Bean: Class_jgt <br>
- * Generation Timestamp: Mon Feb 04 11:33:56 CET 2019 <br>
+ * Template Bean: CaseComponent_jCOLIBRI_jgt <br>
+ * Generation Timestamp: Mon Feb 04 12:19:15 CET 2019 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -30,7 +30,7 @@ import java.util.*;
  * 
  */
 @SuppressWarnings("unused")
-public class Class_jgt extends TemplateBean
+public class CaseComponent_jCOLIBRI_jgt extends TemplateBean
 {   
     /*------------------------------------------------------------------------*\
      * Fields & constants:                                                    *
@@ -39,13 +39,13 @@ public class Class_jgt extends TemplateBean
     /**
      * The ID for this template bean. It is used for type mapping during automatic value propagation of subtemplates.
      */
-    public static final java.lang.String ID = "Class.";            
+    public static final java.lang.String ID = "CaseComponent_jCOLIBRI.";            
     
     /*------------------------------------------------------------------------*\
      * Constructors:                                                          *
     \*------------------------------------------------------------------------*/
 
-    public Class_jgt()
+    public CaseComponent_jCOLIBRI_jgt()
     {
         initialize();
     }
@@ -58,7 +58,7 @@ public class Class_jgt extends TemplateBean
      * If so, it takes the values from the parent bean.
      * @param parent parent template bean for value propagation
      */    
-    public Class_jgt(TemplateBean parent)
+    public CaseComponent_jCOLIBRI_jgt(TemplateBean parent)
     {
         super(parent);  // 'parent constructor' similar to copy constructor. See explanation above!
         initialize();
@@ -97,7 +97,7 @@ public class Class_jgt extends TemplateBean
      * @param value the value of PackageName as string
      * @return the reference to the current template bean
      */
-    public Class_jgt setPackageName(java.lang.String value)
+    public CaseComponent_jCOLIBRI_jgt setPackageName(java.lang.String value)
     {
         variableMap.put("PackageName", value);
         return this;
@@ -117,29 +117,9 @@ public class Class_jgt extends TemplateBean
      * @param value the value of ClassName as string
      * @return the reference to the current template bean
      */
-    public Class_jgt setClassName(java.lang.String value)
+    public CaseComponent_jCOLIBRI_jgt setClassName(java.lang.String value)
     {
         variableMap.put("ClassName", value);
-        return this;
-    }
-    
-    /**
-     * Returns the value of InterfaceName.
-     * @return value of InterfaceName
-     */
-    public java.lang.String getInterfaceName()
-    {
-        return variableValue("InterfaceName"); 
-    }
-    
-    /**
-     * Sets the value of InterfaceName.
-     * @param value the value of InterfaceName as string
-     * @return the reference to the current template bean
-     */
-    public Class_jgt setInterfaceName(java.lang.String value)
-    {
-        variableMap.put("InterfaceName", value);
         return this;
     }
 
@@ -154,7 +134,7 @@ public class Class_jgt extends TemplateBean
     
     /**
      * This class resembles the subtemplate structure identifier 'foreachAttribute' from the 
-     * template Class.jgt.
+     * template CaseComponent_jCOLIBRI.jgt.
      */
     public static class foreachAttribute
     {
@@ -178,7 +158,7 @@ public class Class_jgt extends TemplateBean
          * If values or subtemplates are not set in this template, the initializations are propagated from 
          * the parent bean. 
          */
-        protected Class_jgt parent = null;
+        protected CaseComponent_jCOLIBRI_jgt parent = null;
     
         /*------------------------------------------------------------------------*\
          * Constructors:                                                          *
@@ -189,7 +169,7 @@ public class Class_jgt extends TemplateBean
          * The parent bean is used for automatic value propagation which works for variable values as well as for subtemplates. 
          * @param parent parent bean for value propagation
          */
-        protected foreachAttribute(Class_jgt parent)
+        protected foreachAttribute(CaseComponent_jCOLIBRI_jgt parent)
         {
             this.parent = parent;
             if (this.parent != null)
@@ -206,7 +186,7 @@ public class Class_jgt extends TemplateBean
          * Returns a reference to parent template bean. 
          * @return parent template bean
          */
-        protected Class_jgt parent()
+        protected CaseComponent_jCOLIBRI_jgt parent()
         {
             return this.parent;        
         }
@@ -233,7 +213,7 @@ public class Class_jgt extends TemplateBean
          * @param beanList the list of templates beans to be inserted for this substructure identifier: 'foreachAttribute'
          * @return reference to current template bean.
          */
-        public Class_jgt setAll(TemplateBeanList beanList)
+        public CaseComponent_jCOLIBRI_jgt setAll(TemplateBeanList beanList)
         {
             parent.subTemplateStructureMap.put("foreachAttribute", beanList);
             return parent;
@@ -286,7 +266,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(Argument_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(Argument_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttribute", bean);    
             return parent;
@@ -321,7 +301,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(Argument_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(Argument_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttribute", bean);    
             return parent;
@@ -356,7 +336,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(Argument_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(Argument_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttribute", bean);
             return parent;
@@ -399,7 +379,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(Attribute_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(Attribute_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttribute", bean);    
             return parent;
@@ -434,7 +414,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(Attribute_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(Attribute_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttribute", bean);    
             return parent;
@@ -469,7 +449,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(Attribute_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(Attribute_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttribute", bean);
             return parent;
@@ -512,7 +492,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(AttributeInit_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(AttributeInit_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttribute", bean);    
             return parent;
@@ -547,7 +527,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(AttributeInit_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(AttributeInit_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttribute", bean);    
             return parent;
@@ -582,7 +562,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(AttributeInit_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(AttributeInit_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttribute", bean);
             return parent;
@@ -625,7 +605,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(Getter_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(Getter_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttribute", bean);    
             return parent;
@@ -660,7 +640,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(Getter_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(Getter_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttribute", bean);    
             return parent;
@@ -695,7 +675,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(Getter_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(Getter_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttribute", bean);
             return parent;
@@ -733,7 +713,7 @@ public class Class_jgt extends TemplateBean
     
     /**
      * This class resembles the subtemplate structure identifier 'foreachAttributeList' from the 
-     * template Class.jgt.
+     * template CaseComponent_jCOLIBRI.jgt.
      */
     public static class foreachAttributeList
     {
@@ -757,7 +737,7 @@ public class Class_jgt extends TemplateBean
          * If values or subtemplates are not set in this template, the initializations are propagated from 
          * the parent bean. 
          */
-        protected Class_jgt parent = null;
+        protected CaseComponent_jCOLIBRI_jgt parent = null;
     
         /*------------------------------------------------------------------------*\
          * Constructors:                                                          *
@@ -768,7 +748,7 @@ public class Class_jgt extends TemplateBean
          * The parent bean is used for automatic value propagation which works for variable values as well as for subtemplates. 
          * @param parent parent bean for value propagation
          */
-        protected foreachAttributeList(Class_jgt parent)
+        protected foreachAttributeList(CaseComponent_jCOLIBRI_jgt parent)
         {
             this.parent = parent;
             if (this.parent != null)
@@ -785,7 +765,7 @@ public class Class_jgt extends TemplateBean
          * Returns a reference to parent template bean. 
          * @return parent template bean
          */
-        protected Class_jgt parent()
+        protected CaseComponent_jCOLIBRI_jgt parent()
         {
             return this.parent;        
         }
@@ -812,7 +792,7 @@ public class Class_jgt extends TemplateBean
          * @param beanList the list of templates beans to be inserted for this substructure identifier: 'foreachAttributeList'
          * @return reference to current template bean.
          */
-        public Class_jgt setAll(TemplateBeanList beanList)
+        public CaseComponent_jCOLIBRI_jgt setAll(TemplateBeanList beanList)
         {
             parent.subTemplateStructureMap.put("foreachAttributeList", beanList);
             return parent;
@@ -865,7 +845,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(ArgumentList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(ArgumentList_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttributeList", bean);    
             return parent;
@@ -900,7 +880,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(ArgumentList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(ArgumentList_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttributeList", bean);    
             return parent;
@@ -935,7 +915,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(ArgumentList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(ArgumentList_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttributeList", bean);
             return parent;
@@ -978,7 +958,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(AttributeList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(AttributeList_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttributeList", bean);    
             return parent;
@@ -1013,7 +993,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(AttributeList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(AttributeList_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttributeList", bean);    
             return parent;
@@ -1048,7 +1028,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(AttributeList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(AttributeList_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttributeList", bean);
             return parent;
@@ -1091,7 +1071,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(AttributeListInit_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(AttributeListInit_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttributeList", bean);    
             return parent;
@@ -1126,7 +1106,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(AttributeListInit_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(AttributeListInit_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttributeList", bean);    
             return parent;
@@ -1161,7 +1141,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(AttributeListInit_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(AttributeListInit_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttributeList", bean);
             return parent;
@@ -1204,7 +1184,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to inserted at the beginning the template bean list.
          * @return reference to current template bean.
          */
-        public Class_jgt prepend(GetterList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt prepend(GetterList_jgt bean)
         {
             parent.subTemplateStructureMap.prepend("foreachAttributeList", bean);    
             return parent;
@@ -1239,7 +1219,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean to be added to the list
          * @return reference to current template bean
          */
-        public Class_jgt append(GetterList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt append(GetterList_jgt bean)
         {
             parent.subTemplateStructureMap.append("foreachAttributeList", bean);    
             return parent;
@@ -1274,7 +1254,7 @@ public class Class_jgt extends TemplateBean
          * @param bean the bean which is inserted into the template bean list as one and only element.
          * @return reference to current template bean 
          */
-        public Class_jgt set(GetterList_jgt bean)
+        public CaseComponent_jCOLIBRI_jgt set(GetterList_jgt bean)
         {
             parent.subTemplateStructureMap.put("foreachAttributeList", bean);
             return parent;
@@ -1319,19 +1299,16 @@ public class Class_jgt extends TemplateBean
     {
         // variables:
         variables.add("PackageName");
-        variables.add("ClassName");
-        variables.add("InterfaceName");        
+        variables.add("ClassName");        
         // subtemplates:
         subTemplateStructureIdentifiers.add("foreachAttribute");
         subTemplateStructureIdentifiers.add("foreachAttributeList");        
         // bean parts for toString() method:
         partList.add(new TextPart("package ",0));
         partList.add(new VariablePart("PackageName","<<PackageName>>",8));
-        partList.add(new TextPart(";    \n  \npublic class ",27));
+        partList.add(new TextPart(";\n\nimport com.opencsv.bean.CsvBindByName;\nimport com.opencsv.bean.CsvBindAndSplitByName;\n\nimport es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;\nimport es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;\n\nimport java.util.LinkedList;\nimport java.util.List;\n\npublic class ",27));
         partList.add(new VariablePart("ClassName","<<ClassName>>",13));
-        partList.add(new TextPart(" implements ",30));
-        partList.add(new VariablePart("InterfaceName","<<InterfaceName>>",42));
-        partList.add(new TextPart("\n{ \n    ",63));
+        partList.add(new TextPart(" implements CaseComponent {\n\n    ",30));
         partList.add(new SubTemplateStructurePart("foreachAttribute",4,"Attribute."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
         partList.add(new TextPart("\n\n    ",44));
@@ -1354,13 +1331,17 @@ public class Class_jgt extends TemplateBean
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
         partList.add(new TextPart("\n    }\n    ",56));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart("\n    \n    ",37));
+        partList.add(new TextPart("\n\n    public ",37));
+        partList.add(new VariablePart("ClassName","<<ClassName>>",11));
+        partList.add(new TextPart("() { }\n    \n    public Attribute getIdAttribute() {\n        return new Attribute(\"id\", ",28));
+        partList.add(new VariablePart("ClassName","<<ClassName>>",35));
+        partList.add(new TextPart(".class);\n    }\n\n    ",52));
         partList.add(new SubTemplateStructurePart("foreachAttribute",4,"Getter."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
         partList.add(new TextPart("\n\n    ",41));
         partList.add(new SubTemplateStructurePart("foreachAttributeList",4,"GetterList."));
         partList.add(new TextOperatorPart(new DeleteTrailingWhitespaceLinesOperator(null)));
-        partList.add(new TextPart("\n    \n    // {{ProtectedRegionStart::ManuallyWrittenCode}}    \n        // ...\n        // insert your customized code here!        \n        // ... \n    // {{ProtectedRegionEnd}}\n}\n",49));
+        partList.add(new TextPart("\n    \n    // {{ProtectedRegionStart::ManuallyWrittenCode}}    \n        // ...\n        // insert your customized code here!        \n        // ... \n    // {{ProtectedRegionEnd}}\n    \n}\n",49));
     }
 }
 

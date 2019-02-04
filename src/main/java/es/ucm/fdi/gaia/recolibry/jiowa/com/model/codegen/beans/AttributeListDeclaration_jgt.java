@@ -1,5 +1,5 @@
 //
-// AUTOMATICALLY GENERATED from template file Argument.jgt
+// AUTOMATICALLY GENERATED from template file AttributeListDeclaration.jgt
 // 
 // by the Jiowa Code Generation Framework (www.jiowa.de)
 //
@@ -17,8 +17,8 @@ import java.util.*;
 /**
  * AUTOMATICALLY GENERATED <br>
  *  
- * Template Bean: Argument_jgt <br>
- * Generation Timestamp: Mon Feb 04 11:33:56 CET 2019 <br>
+ * Template Bean: AttributeListDeclaration_jgt <br>
+ * Generation Timestamp: Mon Feb 04 12:19:15 CET 2019 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -30,7 +30,7 @@ import java.util.*;
  * 
  */
 @SuppressWarnings("unused")
-public class Argument_jgt extends TemplateBean
+public class AttributeListDeclaration_jgt extends TemplateBean
 {   
     /*------------------------------------------------------------------------*\
      * Fields & constants:                                                    *
@@ -39,13 +39,13 @@ public class Argument_jgt extends TemplateBean
     /**
      * The ID for this template bean. It is used for type mapping during automatic value propagation of subtemplates.
      */
-    public static final java.lang.String ID = "Argument.";            
+    public static final java.lang.String ID = "AttributeListDeclaration.";            
     
     /*------------------------------------------------------------------------*\
      * Constructors:                                                          *
     \*------------------------------------------------------------------------*/
 
-    public Argument_jgt()
+    public AttributeListDeclaration_jgt()
     {
         initialize();
     }
@@ -58,7 +58,7 @@ public class Argument_jgt extends TemplateBean
      * If so, it takes the values from the parent bean.
      * @param parent parent template bean for value propagation
      */    
-    public Argument_jgt(TemplateBean parent)
+    public AttributeListDeclaration_jgt(TemplateBean parent)
     {
         super(parent);  // 'parent constructor' similar to copy constructor. See explanation above!
         initialize();
@@ -97,7 +97,7 @@ public class Argument_jgt extends TemplateBean
      * @param value the value of DataType as string
      * @return the reference to the current template bean
      */
-    public Argument_jgt setDataType(java.lang.String value)
+    public AttributeListDeclaration_jgt setDataType(java.lang.String value)
     {
         variableMap.put("DataType", value);
         return this;
@@ -117,7 +117,7 @@ public class Argument_jgt extends TemplateBean
      * @param value the value of AttributeName as string
      * @return the reference to the current template bean
      */
-    public Argument_jgt setAttributeName(java.lang.String value)
+    public AttributeListDeclaration_jgt setAttributeName(java.lang.String value)
     {
         variableMap.put("AttributeName", value);
         return this;
@@ -144,12 +144,10 @@ public class Argument_jgt extends TemplateBean
         variables.add("AttributeName");        
         // subtemplates:        
         // bean parts for toString() method:
-        partList.add(new TextPart("",0));
-        partList.add(new TextPart("",0));
-        partList.add(new VariablePart("DataType","<<DataType>>",0));
-        partList.add(new TextPart(" ",16));
-        partList.add(new VariablePart("AttributeName","<<AttributeName>>",17));
-        partList.add(new TextPart(", ",92));
+        partList.add(new TextPart("List<",0));
+        partList.add(new VariablePart("DataType","<<DataType>>",5));
+        partList.add(new TextPart("> ",21));
+        partList.add(new VariablePart("AttributeName","<<AttributeName>>",23));
     }
 }
 

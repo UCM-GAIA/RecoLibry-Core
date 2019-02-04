@@ -1,5 +1,5 @@
 //
-// AUTOMATICALLY GENERATED from template file GetterList.jgt
+// AUTOMATICALLY GENERATED from template file AttributeDeclaration.jgt
 // 
 // by the Jiowa Code Generation Framework (www.jiowa.de)
 //
@@ -17,8 +17,8 @@ import java.util.*;
 /**
  * AUTOMATICALLY GENERATED <br>
  *  
- * Template Bean: GetterList_jgt <br>
- * Generation Timestamp: Mon Feb 04 11:33:57 CET 2019 <br>
+ * Template Bean: AttributeDeclaration_jgt <br>
+ * Generation Timestamp: Mon Feb 04 12:19:15 CET 2019 <br>
  * JIOWA CodeGen Version: jiowa-codegen-2.1.6 
  * 
  * <p>
@@ -30,7 +30,7 @@ import java.util.*;
  * 
  */
 @SuppressWarnings("unused")
-public class GetterList_jgt extends TemplateBean
+public class AttributeDeclaration_jgt extends TemplateBean
 {   
     /*------------------------------------------------------------------------*\
      * Fields & constants:                                                    *
@@ -39,13 +39,13 @@ public class GetterList_jgt extends TemplateBean
     /**
      * The ID for this template bean. It is used for type mapping during automatic value propagation of subtemplates.
      */
-    public static final java.lang.String ID = "GetterList.";            
+    public static final java.lang.String ID = "AttributeDeclaration.";            
     
     /*------------------------------------------------------------------------*\
      * Constructors:                                                          *
     \*------------------------------------------------------------------------*/
 
-    public GetterList_jgt()
+    public AttributeDeclaration_jgt()
     {
         initialize();
     }
@@ -58,7 +58,7 @@ public class GetterList_jgt extends TemplateBean
      * If so, it takes the values from the parent bean.
      * @param parent parent template bean for value propagation
      */    
-    public GetterList_jgt(TemplateBean parent)
+    public AttributeDeclaration_jgt(TemplateBean parent)
     {
         super(parent);  // 'parent constructor' similar to copy constructor. See explanation above!
         initialize();
@@ -97,7 +97,7 @@ public class GetterList_jgt extends TemplateBean
      * @param value the value of DataType as string
      * @return the reference to the current template bean
      */
-    public GetterList_jgt setDataType(java.lang.String value)
+    public AttributeDeclaration_jgt setDataType(java.lang.String value)
     {
         variableMap.put("DataType", value);
         return this;
@@ -117,7 +117,7 @@ public class GetterList_jgt extends TemplateBean
      * @param value the value of AttributeName as string
      * @return the reference to the current template bean
      */
-    public GetterList_jgt setAttributeName(java.lang.String value)
+    public AttributeDeclaration_jgt setAttributeName(java.lang.String value)
     {
         variableMap.put("AttributeName", value);
         return this;
@@ -144,19 +144,10 @@ public class GetterList_jgt extends TemplateBean
         variables.add("AttributeName");        
         // subtemplates:        
         // bean parts for toString() method:
-        partList.add(new TextPart("/**\n * Returns the value of type ",0));
-        partList.add(new VariablePart("DataType","<<DataType>>",29));
-        partList.add(new TextPart(" for attribute ",45));
-        partList.add(new VariablePart("AttributeName","<<AttributeName>>",60));
-        partList.add(new TextPart(".\n * @return value of ",81));
-        partList.add(new VariablePart("AttributeName","<<AttributeName>>",20));
-        partList.add(new TextPart("\n */\npublic List<",41));
-        partList.add(new VariablePart("DataType","<<DataType>>",12));
-        partList.add(new TextPart(" > get",28));
-        partList.add(new VariablePart("AttributeName","<<+AttributeName>>",34,FirstToUpperCaseOperator.getInstance()));
-        partList.add(new TextPart("()\n{\n    return this.",56));
-        partList.add(new VariablePart("AttributeName","<<AttributeName>>",16));
-        partList.add(new TextPart(";\n}\n\n",37));
+        partList.add(new TextPart("",0));
+        partList.add(new VariablePart("DataType","<<DataType>>",0));
+        partList.add(new TextPart(" ",16));
+        partList.add(new VariablePart("AttributeName","<<AttributeName>>",17));
     }
 }
 
