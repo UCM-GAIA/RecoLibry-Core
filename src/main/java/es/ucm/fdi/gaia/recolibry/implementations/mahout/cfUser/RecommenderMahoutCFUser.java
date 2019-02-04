@@ -1,26 +1,24 @@
-package es.ucm.fdi.gaia.recolibry.implementations.mahout.algorithms;
+package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.algorithms;
 
 import com.google.inject.name.Named;
 import es.ucm.fdi.gaia.recolibry.api.Query;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
-import es.ucm.fdi.gaia.recolibry.implementations.mahout.queries.MahoutCFUserQuery;
+import es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.MahoutCFUserQuery;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
-import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.recommender.UserBasedRecommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 import javax.inject.Inject;
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of a generic user recommender system
+ * Implementation of a generic user recommender system using Mahout framework.
  *
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0

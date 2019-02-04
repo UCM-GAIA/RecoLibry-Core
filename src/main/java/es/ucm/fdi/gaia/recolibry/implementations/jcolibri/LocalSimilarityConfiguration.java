@@ -18,7 +18,13 @@ public class LocalSimilarityConfiguration {
 	private Class<?> clazz;
 	private LocalSimilarityFunction similarityFunction;
 	private Double weight;
-	
+
+	/**
+	 * Constructor of a local similarity configuration.
+	 * @param attributeName name of the attribute used in local similarity.
+	 * @param clazz class where is the attribute used in local similarity.
+	 * @param similarityFunction similarity function used.
+	 */
 	@Inject
 	public LocalSimilarityConfiguration(String attributeName, Class<?> clazz, LocalSimilarityFunction similarityFunction) {
 		super();
@@ -40,6 +46,10 @@ public class LocalSimilarityConfiguration {
 		return similarityFunction;
 	}
 
+	/**
+	 * Set the attribute weight in the global similarity function.
+	 * @param weight
+	 */
 	public void setWeight(Double weight) {
 		this.weight = weight;
 	}

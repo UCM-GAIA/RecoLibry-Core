@@ -57,24 +57,30 @@ public class CSVConnector implements Connector {
         }
 	}
 
+	@Override
 	public void initFromXMLfile(URL file) throws InitializingException {}
 
+	@Override
 	public void close() {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
 	public void storeCases(Collection<CBRCase> cases) {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
 	public void deleteCases(Collection<CBRCase> cases) {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
 	public Collection<CBRCase> retrieveAllCases() {
 		return cases;
 	}
 
+	@Override
 	public Collection<CBRCase> retrieveSomeCases(CaseBaseFilter filter) {
 		return null;
 	}

@@ -1,12 +1,6 @@
 package es.ucm.fdi.gaia.recolibry.implementations.jcolibri;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.log4j.LogManager;
-
 import com.google.inject.Inject;
-
 import es.ucm.fdi.gaia.jcolibri.casebase.LinealCaseBase;
 import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
@@ -14,13 +8,17 @@ import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRCaseBase;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRQuery;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Connector;
 import es.ucm.fdi.gaia.jcolibri.exception.ExecutionException;
-import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNConfig;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.NNScoringMethod;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.GlobalSimilarityFunction;
+import es.ucm.fdi.gaia.jcolibri.method.retrieve.RetrievalResult;
 import es.ucm.fdi.gaia.recolibry.api.Query;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
+import org.apache.log4j.LogManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class that implements a content-based recommender algorithm using
@@ -48,7 +46,11 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 		this.globalSimFunction = globalSimFunction;
 		this.configurations = configurations;
 	}
-	
+
+	/**
+	 * It calls the configure and preCycle methods of jColibri.
+	 * @return true if there is any error from this methods. false in other cases.
+	 */
 	public boolean init() {
 		try {
 			configure();
@@ -60,6 +62,11 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 		}
 	}
 
+	/**
+	 * It calls the cycle method of jColibri using the query of the recommender system.
+	 * @param query Query that contains the information to make a recomendation.
+	 * @return list of recommendations obtained from jColibri.
+	 */
 	public List<RecommenderResult> recommend(Query query) {
 		try {
 			cycle((CBRQuery) query);
@@ -81,12 +88,13 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 		
 	}
 	
-	/* jCOLIBRI Methods */
-	
+
+	@Override
 	public void configure() throws ExecutionException {
 		caseBase = new LinealCaseBase();
 	}
 
+	@Override
 	public void cycle(CBRQuery query) throws ExecutionException {
 		NNConfig config = new NNConfig();
 		
@@ -107,10 +115,12 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 		}
 	}
 
+	@Override
 	public void postCycle() throws ExecutionException {
 		caseBase.close();
 	}
 
+	@Override
 	public CBRCaseBase preCycle() throws ExecutionException {
 		caseBase.init(connector);
 		return caseBase;

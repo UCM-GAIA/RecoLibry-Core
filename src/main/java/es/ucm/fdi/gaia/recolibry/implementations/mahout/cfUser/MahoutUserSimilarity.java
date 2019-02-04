@@ -11,17 +11,27 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 import java.util.Collection;
 
+/**
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MahoutUserSimilarity implements UserSimilarity {
 
     private UserSimilarity userSimilarity;
 
+    /**
+     *
+     * @param type
+     * @param dataModel
+     */
     @Inject
     public MahoutUserSimilarity(@Named("TypeUserSimilarity") String type, DataModel dataModel) {
 
         try {
 
             switch (type) {
-                case "CytyBlock":
+                case "CityBlock":
                     userSimilarity = new CityBlockSimilarity(dataModel);
                     break;
                 case "Euclidean":

@@ -3,9 +3,11 @@ package es.ucm.fdi.gaia.recolibry.implementations.jcolibri;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRQuery;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 import es.ucm.fdi.gaia.recolibry.api.Query;
-import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 
 /**
+ * Class that defines the query of recommender systems to
+ * use in CBR Systems of jColibri.
+ *
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
  */
