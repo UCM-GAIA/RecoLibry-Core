@@ -5,7 +5,6 @@ import com.google.inject.name.Names;
 import com.jiowa.codegen.JiowaCodeGeneratorEngine;
 import com.jiowa.codegen.config.JiowaCodeGenConfig;
 import es.ucm.fdi.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
-import es.ucm.fdi.gaia.recolibry.examples.test1.GenresSimilarity;
 import es.ucm.fdi.gaia.recolibry.implementations.jcolibri.LocalSimilarityConfiguration;
 import es.ucm.fdi.gaia.recolibry.utils.BeansFactory;
 import es.ucm.fdi.gaia.recolibry.utils.ClassGenerator;
@@ -14,19 +13,29 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.beans.Beans;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to build a recommender systems using a configuration file.
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class JsonRecSysConfiguration extends RecSysConfiguration {
 
     private JSONObject configObject;
     private JSONObject generateClass;
     private String generatedClassName;
 
+    /**
+     * Constructor of a {@link JsonRecSysConfiguration} object. It
+     * needs the path of the configuration file.
+     * @param jsonPath path where is the configuration file.
+     */
     public JsonRecSysConfiguration(String jsonPath) {
         try {
 
@@ -109,7 +118,6 @@ public class JsonRecSysConfiguration extends RecSysConfiguration {
 
             }
 
-            // Añadimos el resto de injects
             JSONArray injections = (JSONArray) configObject.get("injections");
             for (int i = 0; i < injections.size(); i++) {
 
