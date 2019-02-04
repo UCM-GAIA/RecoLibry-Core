@@ -1,4 +1,4 @@
-package es.ucm.fdi.gaia.recolibry.implementations.mahout.models;
+package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.models;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;

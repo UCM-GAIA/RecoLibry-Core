@@ -1,4 +1,4 @@
-package es.ucm.fdi.gaia.recolibry.implementations.mahout.queries;
+package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser;
 
 import es.ucm.fdi.gaia.recolibry.api.Query;
 
