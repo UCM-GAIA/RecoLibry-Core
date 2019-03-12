@@ -1,0 +1,6 @@
+com.model.codegen.beans
+es.ucm.fdi.gaia.recolibry.api
+es.ucm.fdi.gaia.recolibry.implementations.jcolibri
+es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser
+es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.models
+es.ucm.fdi.gaia.recolibry.utils

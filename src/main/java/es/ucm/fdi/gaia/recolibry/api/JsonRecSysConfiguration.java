@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to build a recommender systems using a configuration file.
+ * Class to build a recommender system using a configuration file.
  *
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
