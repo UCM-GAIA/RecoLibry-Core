@@ -24,6 +24,10 @@ public class MahoutCFUserQuery implements Query {
     private Long bean;
 
     @Override
+    public void initializeQuery() {
+        bean = new Long(0);
+    }
+
     public void setBean(Object bean) {
         this.bean = (Long) bean;
     }

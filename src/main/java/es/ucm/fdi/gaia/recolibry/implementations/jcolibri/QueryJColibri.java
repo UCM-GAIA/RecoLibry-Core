@@ -17,9 +17,15 @@
  */
 package es.ucm.fdi.gaia.recolibry.implementations.jcolibri;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CBRQuery;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
 import es.ucm.fdi.gaia.recolibry.api.Query;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class that defines the query of recommender systems to
@@ -30,8 +36,82 @@ import es.ucm.fdi.gaia.recolibry.api.Query;
  */
 public class QueryJColibri extends CBRQuery implements Query {
 
+    private Class<?> beanClassName;
+
+    /**
+     * Set the class that defines the bean object used as query.
+     * @param beanClass name of the package and class of the bean class.
+     */
+    @Inject
+    public QueryJColibri(@Named("BeanClass") String beanClass) {
+        try {
+            this.beanClassName = Class.forName(beanClass);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
-    public void setBean(Object bean) {
-        this.setDescription((CaseComponent) bean);
+    public void initializeQuery() {
+        try {
+
+            Object beanObject = beanClassName.newInstance();
+            this.setDescription((CaseComponent) beanObject);
+
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method to obtain the name of all attributes contained in the bean object.
+     * @return list of names.
+     */
+    public List<String> getAttributesNames() {
+        Field[] fields = beanClassName.getDeclaredFields();
+
+        List<String> result = new ArrayList<>();
+        for(Field f: fields){
+            result.add(f.getName() + "(" + f.getType().getSimpleName() + ")");
+        }
+
+        return result;
+    }
+
+    /**
+     * Method to add a value to an attribute of the query bean.
+     * @param attributeName name of the attribute to set the value.
+     * @param value value to set in the bean's attribute.
+     */
+    public void setAttributeValue(String attributeName, Object value) {
+        try {
+            Field field = beanClassName.getDeclaredField(attributeName);
+            field.set(this.getDescription(), value);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method to get the value asigned in an bean's attribute.
+     * @param attribute name of the attribute to get the value.
+     * @return value that contains the attribute.
+     */
+    public Object getAttributeValue(String attribute) {
+
+        try {
+            Field field = beanClassName.getDeclaredField(attribute);
+            return field.get(this.getDescription());
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
