@@ -19,20 +19,63 @@ package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser;
 
 import es.ucm.fdi.gaia.recolibry.api.Query;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MahoutCFUserQuery implements Query {
 
-    private Long bean;
+    private Long userId;
 
     @Override
     public void initializeQuery() {
-        bean = new Long(0);
+        userId = new Long(0);
     }
 
-    public void setBean(Object bean) {
-        this.bean = (Long) bean;
+    @Override
+    public List<String> getAttributesNames() {
+        Field[] fields = this.getClass().getDeclaredFields();
+
+        List<String> result = new ArrayList<>();
+        for(Field f: fields){
+            result.add(f.getName() + "(" + f.getType().getSimpleName() + ")");
+        }
+
+        return result;
     }
 
-    public long getBean() {
-        return bean;
+    @Override
+    public void setAttributeValue(String attributeName, Object value) {
+        try {
+            Field field = this.getClass().getDeclaredField(attributeName);
+            field.set(this, value);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public Object getAttributeValue(String attribute) {
+        try {
+            Field field = this.getClass().getDeclaredField(attribute);
+            return field.get(this);
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public void setUserId(Object userId) {
+        this.userId = (Long) userId;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 }

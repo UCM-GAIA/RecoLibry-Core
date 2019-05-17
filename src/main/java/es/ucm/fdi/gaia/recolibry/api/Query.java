@@ -17,6 +17,8 @@
  */
 package es.ucm.fdi.gaia.recolibry.api;
 
+import java.util.List;
+
 /**
  * Interface to define methods necessary in a {@link Query} object.
  *
@@ -30,4 +32,23 @@ public interface Query {
      */
     void initializeQuery();
 
+    /**
+     * Method to obtain the name of all attributes contained in the bean object.
+     * @return list of names.
+     */
+    List<String> getAttributesNames();
+
+    /**
+     * Method to add a value to an attribute of the query bean.
+     * @param attributeName name of the attribute to set the value.
+     * @param value value to set in the bean's attribute.
+     */
+    void setAttributeValue(String attributeName, Object value);
+
+    /**
+     * Method to get the value asigned in an bean's attribute.
+     * @param attribute name of the attribute to get the value.
+     * @return value that contains the attribute.
+     */
+    Object getAttributeValue(String attribute);
 }

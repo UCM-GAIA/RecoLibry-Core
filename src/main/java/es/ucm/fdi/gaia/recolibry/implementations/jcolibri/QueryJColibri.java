@@ -65,14 +65,12 @@ public class QueryJColibri extends CBRQuery implements Query {
         }
     }
 
-    /**
-     * Method to obtain the name of all attributes contained in the bean object.
-     * @return list of names.
-     */
+    @Override
     public List<String> getAttributesNames() {
         Field[] fields = beanClassName.getDeclaredFields();
 
-        List<String> result = new ArrayList<>();
+        List<String> result;
+        result = new ArrayList<>();
         for(Field f: fields){
             result.add(f.getName() + "(" + f.getType().getSimpleName() + ")");
         }
@@ -80,11 +78,7 @@ public class QueryJColibri extends CBRQuery implements Query {
         return result;
     }
 
-    /**
-     * Method to add a value to an attribute of the query bean.
-     * @param attributeName name of the attribute to set the value.
-     * @param value value to set in the bean's attribute.
-     */
+    @Override
     public void setAttributeValue(String attributeName, Object value) {
         try {
             Field field = beanClassName.getDeclaredField(attributeName);
@@ -96,11 +90,7 @@ public class QueryJColibri extends CBRQuery implements Query {
         }
     }
 
-    /**
-     * Method to get the value asigned in an bean's attribute.
-     * @param attribute name of the attribute to get the value.
-     * @return value that contains the attribute.
-     */
+    @Override
     public Object getAttributeValue(String attribute) {
 
         try {
