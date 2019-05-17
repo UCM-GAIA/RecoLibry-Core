@@ -18,6 +18,7 @@
 package es.ucm.fdi.gaia.recolibry.implementations.jcolibri;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import es.ucm.fdi.gaia.jcolibri.casebase.LinealCaseBase;
 import es.ucm.fdi.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
@@ -57,7 +58,7 @@ public class RecommenderJColibri implements RecommenderAlgorithm, StandardCBRApp
 	private List<RecommenderResult> recommenderResults;
 
 	@Inject
-	public RecommenderJColibri(Connector connector, int kNeighbourhood, GlobalSimilarityFunction globalSimFunction, List<LocalSimilarityConfiguration> configurations) {
+	public RecommenderJColibri(Connector connector, @Named("N-Results") int kNeighbourhood, GlobalSimilarityFunction globalSimFunction, List<LocalSimilarityConfiguration> configurations) {
 		this.connector = connector;
 		this.kNeighbourhood = kNeighbourhood;
 		this.globalSimFunction = globalSimFunction;
