@@ -21,7 +21,6 @@ import com.google.inject.name.Named;
 import es.ucm.fdi.gaia.recolibry.api.Query;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
-import es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.MahoutCFUserQuery;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
@@ -67,7 +66,7 @@ public class RecommenderMahoutCFUser implements RecommenderAlgorithm {
         List<RecommenderResult> results = null;
 
         try {
-            List<RecommendedItem> resultsMahout = recommender.recommend(((MahoutCFUserQuery) query).getBean(), numResults, null, false);
+            List<RecommendedItem> resultsMahout = recommender.recommend(((MahoutCFUserQuery) query).getUserId(), numResults, null, false);
 
             results = new ArrayList<>();
 
