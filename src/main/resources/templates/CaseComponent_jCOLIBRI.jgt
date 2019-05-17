@@ -1,7 +1,7 @@
 package <<PackageName>>;
 
-import com.opencsv.bean.CsvBindByName;
-import com.opencsv.bean.CsvBindAndSplitByName;
+import com.opencsv.userId.CsvBindByName;
+import com.opencsv.userId.CsvBindAndSplitByName;
 
 import es.ucm.fdi.gaia.jcolibri.cbrcore.Attribute;
 import es.ucm.fdi.gaia.jcolibri.cbrcore.CaseComponent;
