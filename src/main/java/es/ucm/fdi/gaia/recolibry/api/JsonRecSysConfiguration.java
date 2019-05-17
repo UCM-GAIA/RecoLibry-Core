@@ -119,8 +119,8 @@ public class JsonRecSysConfiguration extends RecSysConfiguration {
     protected void configure() {
 
         try {
-            if (configObject.containsKey("generatedClass")) {
-                generateClass = (JSONObject) configObject.get("generatedClass");
+            if (configObject.containsKey("generateClass")) {
+                generateClass = (JSONObject) configObject.get("generateClass");
 
                 generateClass();
                 compile();
@@ -135,7 +135,7 @@ public class JsonRecSysConfiguration extends RecSysConfiguration {
 
             }
 
-            JSONArray injections = (JSONArray) configObject.get("injections");
+            JSONArray injections = (JSONArray) configObject.get("configure");
             for (int i = 0; i < injections.size(); i++) {
 
                 JSONObject inject = (JSONObject) injections.get(i);
