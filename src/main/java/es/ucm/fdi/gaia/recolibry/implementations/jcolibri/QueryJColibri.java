@@ -52,7 +52,7 @@ public class QueryJColibri extends CBRQuery implements Query {
     }
 
     @Override
-    public void initializeQuery() {
+    public void initialize() {
         try {
 
             Object beanObject = beanClassName.newInstance();

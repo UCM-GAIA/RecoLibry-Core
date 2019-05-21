@@ -30,7 +30,7 @@ public interface Query {
     /**
      * Method to build an empty bean object.
      */
-    void initializeQuery();
+    void initialize();
 
     /**
      * Method to obtain the name of all attributes contained in the bean object.

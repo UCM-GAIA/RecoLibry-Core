@@ -27,7 +27,7 @@ import java.io.IOException;
 public class MahoutFileDataModel extends FileDataModel {
 
     @Inject
-    public MahoutFileDataModel(File dataFile, @Named("delimiter") String delimiterRegex) throws IOException {
+    public MahoutFileDataModel(@Named("source") File dataFile, @Named("delimiter") String delimiterRegex) throws IOException {
         super(dataFile, delimiterRegex);
     }
 

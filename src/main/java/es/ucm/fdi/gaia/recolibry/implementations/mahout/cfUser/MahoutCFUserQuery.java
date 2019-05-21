@@ -28,7 +28,7 @@ public class MahoutCFUserQuery implements Query {
     private Long userId;
 
     @Override
-    public void initializeQuery() {
+    public void initialize() {
         userId = new Long(0);
     }
 
