@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.models;
+package es.ucm.fdi.gaia.recolibry.implementations.mahout.models;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
