@@ -8,7 +8,7 @@
 
     <groupId>es.ucm.fdi.gaia</groupId>
     <artifactId>RecoLibry-Core</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
     
 
     <name>RecoLibry-Core</name>
