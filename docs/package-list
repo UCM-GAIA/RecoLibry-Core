@@ -1,0 +1,6 @@
+es.ucm.fdi.gaia.recolibry.api
+es.ucm.fdi.gaia.recolibry.implementations.jcolibri
+es.ucm.fdi.gaia.recolibry.implementations.mahout.cfItem
+es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser
+es.ucm.fdi.gaia.recolibry.implementations.mahout.models
+es.ucm.fdi.gaia.recolibry.utils
