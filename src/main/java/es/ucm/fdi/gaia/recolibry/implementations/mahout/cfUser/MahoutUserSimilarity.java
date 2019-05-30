@@ -30,6 +30,9 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import java.util.Collection;
 
 /**
+ * Class to select the similarity function to apply in the {@link RecommenderMahoutCFUser}. There
+ * are 7 functions to select: CityBlock, Euclidean, LogLike, Pearson, Spearman, Tanimoto nad
+ * UncenteredCosine.
  *
  * @author Jose L. Jorro-Aragoneses
  * @version 1.0
@@ -39,9 +42,9 @@ public class MahoutUserSimilarity implements UserSimilarity {
     private UserSimilarity userSimilarity;
 
     /**
-     *
-     * @param type
-     * @param dataModel
+     * Method to build the similarity function.
+     * @param type type of similarity function selected.
+     * @param dataModel data model where is applied this similarity function.
      */
     @Inject
     public MahoutUserSimilarity(@Named("TypeUserSimilarity") String type, DataModelFactory dataModel) {

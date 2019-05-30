@@ -23,6 +23,13 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that implements the query used in the {@link RecommenderMahoutCFItem}. It
+ * contains the item identity.
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MahoutCFItemQuery implements Query {
 
     private Long itemId;

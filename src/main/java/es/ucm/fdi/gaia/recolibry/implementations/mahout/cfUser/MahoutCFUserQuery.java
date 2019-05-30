@@ -23,6 +23,13 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class that implements the query used in the {@link RecommenderMahoutCFUser}. It
+ * contains the user identity.
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MahoutCFUserQuery implements Query {
 
     private Long userId;

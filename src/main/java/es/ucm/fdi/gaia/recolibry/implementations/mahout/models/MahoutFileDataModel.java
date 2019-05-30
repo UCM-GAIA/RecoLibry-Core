@@ -17,17 +17,26 @@
  */
 package es.ucm.fdi.gaia.recolibry.implementations.mahout.models;
 
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Class to implement a DataModel based on a CSV file.
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MahoutFileDataModel extends FileDataModel {
 
-    @Inject
-    public MahoutFileDataModel(@Named("source") File dataFile, @Named("delimiter") String delimiterRegex) throws IOException {
+    /**
+     * Method to build a new {@link MahoutFileDataModel} instance.
+     * @param dataFile file that contains all data.
+     * @param delimiterRegex delimiter that separates each value in the file.
+     * @throws IOException
+     */
+    public MahoutFileDataModel(File dataFile, String delimiterRegex) throws IOException {
         super(dataFile, delimiterRegex);
     }
 

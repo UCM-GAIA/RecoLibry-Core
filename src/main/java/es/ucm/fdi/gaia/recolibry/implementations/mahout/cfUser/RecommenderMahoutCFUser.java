@@ -48,6 +48,13 @@ public class RecommenderMahoutCFUser implements RecommenderAlgorithm {
     private int numResults;
     private UserBasedRecommender recommender;
 
+    /**
+     * Method to build the recommender system.
+     * @param dataModel data model that saves all information used by the recommender system.
+     * @param neighborhood neighborhood algorithm configure to the recommender system.
+     * @param userSimilarity similarity function configure to the recommender system.
+     * @param numResults maximum number of results returned by the recommender system.
+     */
     @Inject
     public RecommenderMahoutCFUser(DataModelFactory dataModel, UserNeighborhood neighborhood, UserSimilarity userSimilarity, @Named("numResults") int numResults){
         this.dataModel = dataModel.getModel();

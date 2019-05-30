@@ -24,17 +24,32 @@ import org.apache.mahout.cf.taste.common.Refreshable;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
 import org.apache.mahout.cf.taste.impl.neighborhood.ThresholdUserNeighborhood;
-import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
 
+/**
+ * Class to select which neighborhood algorithms use in a {@link RecommenderMahoutCFUser}. There
+ * are two algorithms to select: NearesN (the n most similar users) and Threshold (users with a
+ * similarity value mayor than a threshold).
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MahoutUserNeighborhood implements UserNeighborhood {
 
     private UserNeighborhood userNeighborhood;
 
+    /**
+     * Method to build a Neighborhood algorithm.
+     * @param type select the algorithm type: NearestN or Threshold.
+     * @param n number of users to recover. It is used if the algorithm type is NearestN.
+     * @param threshold threshold to recover users. It is used if the algorithm type is Threshold.
+     * @param similarity similarity function used in the algorithm.
+     * @param model data model to apply this algorithm.
+     */
     @Inject
     public MahoutUserNeighborhood(@Named("TypeNeighborhood") String type, @Named("N-Users") int n, @Named("Threshold") @Nullable double threshold, UserSimilarity similarity, DataModelFactory model) {
 

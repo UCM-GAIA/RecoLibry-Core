@@ -6,15 +6,27 @@ import es.ucm.fdi.gaia.recolibry.implementations.mahout.models.DataModelFactory;
 import org.apache.mahout.cf.taste.common.Refreshable;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.similarity.*;
-import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.similarity.ItemSimilarity;
 
 import java.util.Collection;
 
+/**
+ * Class to select the similarity function to apply in the {@link RecommenderMahoutCFItem}. There
+ * are 6 functions to select: CityBlock, Euclidean, LogLike, Pearson, Tanimoto nad
+ * UncenteredCosine.
+ *
+ * @author Jose L. Jorro-Aragoneses
+ * @version 1.0
+ */
 public class MahoutItemSimilarity implements ItemSimilarity {
 
     private ItemSimilarity itemSimilarity;
 
+    /**
+     * Method to build the similarity function.
+     * @param type type of similarity function selected.
+     * @param dataModel data model where is applied this similarity function.
+     */
     @Inject
     public MahoutItemSimilarity(@Named("TypeItemSimilarity") String type, DataModelFactory dataModel) {
 
