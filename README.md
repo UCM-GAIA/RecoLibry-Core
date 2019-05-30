@@ -9,7 +9,7 @@ En la versión *0.0.4* de RecoLibry-Core se contempla el desarrollo de los sigui
   - Filtrado colaborativo basado en usuarios.
   - Filtrado colaborativo basado en ítems.
 
-Para desarrollar un sistema recomendadore con RecoLibry-Core, puede consultar la [guía de desarrollo](https://github.com/UCM-GAIA/RecoLibry-Core/wiki).
+Para desarrollar un sistema recomendadore con RecoLibry-Core, puede consultar la [guía de desarrollo](https://github.com/UCM-GAIA/RecoLibry-Core/wiki) o [JavaDoc](https://ucm-gaia.github.io/RecoLibry-Core/).
 
 # RecoLibry-Core :gb:
 
@@ -21,4 +21,4 @@ The *0.0.4* version of RecoLibry-Core includes components to implements the foll
   - User Collaborative Filtering
   - Item Collaborative Filtering
   
-To develop a recommender system using RecoLibry-Core, you can read the [development guide](https://github.com/UCM-GAIA/RecoLibry-Core/wiki/Home-English).
+To develop a recommender system using RecoLibry-Core, you can read the [development guide](https://github.com/UCM-GAIA/RecoLibry-Core/wiki/Home-English) or [JavaDoc](https://ucm-gaia.github.io/RecoLibry-Core/).
