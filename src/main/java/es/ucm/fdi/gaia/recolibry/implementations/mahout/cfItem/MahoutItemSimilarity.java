@@ -2,6 +2,7 @@ package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfItem;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import es.ucm.fdi.gaia.recolibry.implementations.mahout.models.DataModelFactory;
 import org.apache.mahout.cf.taste.common.Refreshable;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.similarity.*;
@@ -15,28 +16,28 @@ public class MahoutItemSimilarity implements ItemSimilarity {
     private ItemSimilarity itemSimilarity;
 
     @Inject
-    public MahoutItemSimilarity(@Named("TypeItemSimilarity") String type, DataModel dataModel) {
+    public MahoutItemSimilarity(@Named("TypeItemSimilarity") String type, DataModelFactory dataModel) {
 
         try {
 
             switch (type) {
                 case "CityBlock":
-                    itemSimilarity = new CityBlockSimilarity(dataModel);
+                    itemSimilarity = new CityBlockSimilarity(dataModel.getModel());
                     break;
                 case "Euclidean":
-                    itemSimilarity = new EuclideanDistanceSimilarity(dataModel);
+                    itemSimilarity = new EuclideanDistanceSimilarity(dataModel.getModel());
                     break;
                 case "LogLike":
-                    itemSimilarity = new LogLikelihoodSimilarity(dataModel);
+                    itemSimilarity = new LogLikelihoodSimilarity(dataModel.getModel());
                     break;
                 case "Pearson":
-                    itemSimilarity = new PearsonCorrelationSimilarity(dataModel);
+                    itemSimilarity = new PearsonCorrelationSimilarity(dataModel.getModel());
                     break;
                 case "Tanimoto":
-                    itemSimilarity = new TanimotoCoefficientSimilarity(dataModel);
+                    itemSimilarity = new TanimotoCoefficientSimilarity(dataModel.getModel());
                     break;
                 case "UncenteredCosine":
-                    itemSimilarity = new UncenteredCosineSimilarity(dataModel);
+                    itemSimilarity = new UncenteredCosineSimilarity(dataModel.getModel());
                     break;
                 default:
                     break;

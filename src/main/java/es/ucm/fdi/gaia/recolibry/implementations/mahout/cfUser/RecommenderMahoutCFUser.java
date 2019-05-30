@@ -21,6 +21,7 @@ import com.google.inject.name.Named;
 import es.ucm.fdi.gaia.recolibry.api.Query;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
+import es.ucm.fdi.gaia.recolibry.implementations.mahout.models.DataModelFactory;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
@@ -48,8 +49,8 @@ public class RecommenderMahoutCFUser implements RecommenderAlgorithm {
     private UserBasedRecommender recommender;
 
     @Inject
-    public RecommenderMahoutCFUser(DataModel dataModel, UserNeighborhood neighborhood, UserSimilarity userSimilarity, @Named("numResults") int numResults){
-        this.dataModel = dataModel;
+    public RecommenderMahoutCFUser(DataModelFactory dataModel, UserNeighborhood neighborhood, UserSimilarity userSimilarity, @Named("numResults") int numResults){
+        this.dataModel = dataModel.getModel();
         this.neighborhood = neighborhood;
         this.userSimilarity = userSimilarity;
         this.numResults = numResults;

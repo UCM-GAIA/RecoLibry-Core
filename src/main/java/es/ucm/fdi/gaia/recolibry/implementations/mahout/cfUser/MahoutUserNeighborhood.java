@@ -19,6 +19,7 @@ package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import es.ucm.fdi.gaia.recolibry.implementations.mahout.models.DataModelFactory;
 import org.apache.mahout.cf.taste.common.Refreshable;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
@@ -35,16 +36,16 @@ public class MahoutUserNeighborhood implements UserNeighborhood {
     private UserNeighborhood userNeighborhood;
 
     @Inject
-    public MahoutUserNeighborhood(@Named("TypeNeighborhood") String type, @Named("N-Users") int n, @Named("Threshold") @Nullable double threshold, UserSimilarity similarity, DataModel model) {
+    public MahoutUserNeighborhood(@Named("TypeNeighborhood") String type, @Named("N-Users") int n, @Named("Threshold") @Nullable double threshold, UserSimilarity similarity, DataModelFactory model) {
 
         try {
 
             switch (type) {
                 case "NearestN":
-                    userNeighborhood = new NearestNUserNeighborhood(n, similarity, model);
+                    userNeighborhood = new NearestNUserNeighborhood(n, similarity, model.getModel());
                     break;
                 case "Threshold":
-                    userNeighborhood = new ThresholdUserNeighborhood(threshold, similarity, model);
+                    userNeighborhood = new ThresholdUserNeighborhood(threshold, similarity, model.getModel());
                     break;
                 default:
                     break;

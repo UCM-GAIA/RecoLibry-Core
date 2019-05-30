@@ -6,6 +6,7 @@ import es.ucm.fdi.gaia.recolibry.api.Query;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderAlgorithm;
 import es.ucm.fdi.gaia.recolibry.api.RecommenderResult;
 import es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser.MahoutCFUserQuery;
+import es.ucm.fdi.gaia.recolibry.implementations.mahout.models.DataModelFactory;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender;
 import org.apache.mahout.cf.taste.model.DataModel;
@@ -24,8 +25,8 @@ public class RecommenderMahoutCFItem implements RecommenderAlgorithm {
     private ItemBasedRecommender recommender;
 
     @Inject
-    public RecommenderMahoutCFItem(DataModel dataModel, ItemSimilarity itemSimilarity, @Named("numResults") int numResults){
-        this.dataModel = dataModel;
+    public RecommenderMahoutCFItem(DataModelFactory dataModel, ItemSimilarity itemSimilarity, @Named("numResults") int numResults){
+        this.dataModel = dataModel.getModel();
         this.itemSimilarity = itemSimilarity;
         this.numResults = numResults;
     }

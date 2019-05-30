@@ -19,6 +19,7 @@ package es.ucm.fdi.gaia.recolibry.implementations.mahout.cfUser;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import es.ucm.fdi.gaia.recolibry.implementations.mahout.models.DataModelFactory;
 import org.apache.mahout.cf.taste.common.Refreshable;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.similarity.*;
@@ -43,31 +44,31 @@ public class MahoutUserSimilarity implements UserSimilarity {
      * @param dataModel
      */
     @Inject
-    public MahoutUserSimilarity(@Named("TypeUserSimilarity") String type, DataModel dataModel) {
+    public MahoutUserSimilarity(@Named("TypeUserSimilarity") String type, DataModelFactory dataModel) {
 
         try {
 
             switch (type) {
                 case "CityBlock":
-                    userSimilarity = new CityBlockSimilarity(dataModel);
+                    userSimilarity = new CityBlockSimilarity(dataModel.getModel());
                     break;
                 case "Euclidean":
-                    userSimilarity = new EuclideanDistanceSimilarity(dataModel);
+                    userSimilarity = new EuclideanDistanceSimilarity(dataModel.getModel());
                     break;
                 case "LogLike":
-                    userSimilarity = new LogLikelihoodSimilarity(dataModel);
+                    userSimilarity = new LogLikelihoodSimilarity(dataModel.getModel());
                     break;
                 case "Pearson":
-                    userSimilarity = new PearsonCorrelationSimilarity(dataModel);
+                    userSimilarity = new PearsonCorrelationSimilarity(dataModel.getModel());
                     break;
                 case "Spearman":
-                    userSimilarity = new SpearmanCorrelationSimilarity(dataModel);
+                    userSimilarity = new SpearmanCorrelationSimilarity(dataModel.getModel());
                     break;
                 case "Tanimoto":
-                    userSimilarity = new TanimotoCoefficientSimilarity(dataModel);
+                    userSimilarity = new TanimotoCoefficientSimilarity(dataModel.getModel());
                     break;
                 case "UncenteredCosine":
-                    userSimilarity = new UncenteredCosineSimilarity(dataModel);
+                    userSimilarity = new UncenteredCosineSimilarity(dataModel.getModel());
                     break;
                 default:
                     break;
